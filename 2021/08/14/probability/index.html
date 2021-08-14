@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="基本定义 我们需要先定义\(\sigma\)-代数. 一个\(\sigma\)代数是指，满足以下条件的类\(\mathscr A\)：  \(\forall A, B \in \mathscr A\): \(A\cap B \in \mathscr A\). \(\forall \left\{ A_i \right\}\subset\mathscr A\): \(\bigcup_{i\ge 1}">
+    <meta name="description" content="引言 从刚才的介绍中，我们已经知道了概率空间三元组的定义。这其中\(\sigma-\)代数和测度是我们在目前还没有学到的概念。 因此在进一步建构概率论的知识体系之前，我们会介绍一个重要的定理，它告诉我们一种导出测度的简单方法，在之后的讨论中这个定理也会被多次用到。 我们刚才讲的概率空间的定义是非常形式化的，只给出了概率空间的一些属性，而没有告诉我们应该如何去建立一个概率空间。 比如说我们想基于单">
 <meta property="og:type" content="article">
-<meta property="og:title" content="-margin-">
+<meta property="og:title" content="概率论">
 <meta property="og:url" content="http://example.com/2021/08/14/probability/index.html">
 <meta property="og:site_name" content="-margin-">
-<meta property="og:description" content="基本定义 我们需要先定义\(\sigma\)-代数. 一个\(\sigma\)代数是指，满足以下条件的类\(\mathscr A\)：  \(\forall A, B \in \mathscr A\): \(A\cap B \in \mathscr A\). \(\forall \left\{ A_i \right\}\subset\mathscr A\): \(\bigcup_{i\ge 1}">
+<meta property="og:description" content="引言 从刚才的介绍中，我们已经知道了概率空间三元组的定义。这其中\(\sigma-\)代数和测度是我们在目前还没有学到的概念。 因此在进一步建构概率论的知识体系之前，我们会介绍一个重要的定理，它告诉我们一种导出测度的简单方法，在之后的讨论中这个定理也会被多次用到。 我们刚才讲的概率空间的定义是非常形式化的，只给出了概率空间的一些属性，而没有告诉我们应该如何去建立一个概率空间。 比如说我们想基于单">
 <meta property="og:locale">
-<meta property="article:published_time" content="2021-08-14T10:52:33.193Z">
-<meta property="article:modified_time" content="2021-08-14T10:52:33.213Z">
+<meta property="article:published_time" content="2021-08-14T11:01:34.675Z">
+<meta property="article:modified_time" content="2021-08-14T11:01:34.675Z">
 <meta property="article:author" content="gaussrz">
 <meta name="twitter:card" content="summary">
     
@@ -36,7 +36,7 @@
       
     
     <!-- title -->
-    <title>-margin-</title>
+    <title>概率论</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -98,21 +98,21 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/08/14/probability/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/14/probability/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/14/probability/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/14/probability/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://example.com/2021/08/14/probability/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/14/probability/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/14/probability/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/14/probability/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/14/probability/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/14/probability/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/14/probability/&t="><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/14/probability/&text=概率论"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/14/probability/&title=概率论"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/14/probability/&is_video=false&description=概率论"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=概率论&body=Check out this article: http://example.com/2021/08/14/probability/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/14/probability/&title=概率论"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/14/probability/&title=概率论"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/14/probability/&title=概率论"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/14/probability/&title=概率论"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/14/probability/&name=概率论&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/14/probability/&t=概率论"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%AE%9A%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text">基本定义</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%81%E6%98%8E%E8%B7%AF%E5%BE%84"><span class="toc-number">2.</span> <span class="toc-text">证明路径</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -124,7 +124,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        
+        概率论
     </h1>
 
 
@@ -136,7 +136,7 @@
       
     <div class="postdate">
       
-        <time datetime="2021-08-14T10:52:33.193Z" itemprop="datePublished">2021-08-14</time>
+        <time datetime="2021-08-14T11:01:34.675Z" itemprop="datePublished">2021-08-14</time>
         
       
     </div>
@@ -151,14 +151,67 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="基本定义">基本定义</h1>
-<p>我们需要先定义<span class="math inline">\(\sigma\)</span>-代数.</p>
-<p>一个<span class="math inline">\(\sigma\)</span>代数是指，满足以下条件的类<span class="math inline">\(\mathscr A\)</span>：</p>
+    
+<h1 id="引言">引言</h1>
+<p>从刚才的介绍中，我们已经知道了概率空间三元组的定义。这其中<span class="math inline">\(\sigma-\)</span>代数和测度是我们在目前还没有学到的概念。 因此在进一步建构概率论的知识体系之前，我们会介绍一个重要的定理，它告诉我们一种导出测度的简单方法，在之后的讨论中这个定理也会被多次用到。</p>
+<p>我们刚才讲的概率空间的定义是非常形式化的，只给出了概率空间的一些属性，而没有告诉我们应该如何去建立一个概率空间。 比如说我们想基于单位区间定义一个概率空间，也就是说给定<span class="math inline">\(\Omega = [0,1]\)</span>，我们应该如何选取<span class="math inline">\(\mathcal F\)</span>和<span class="math inline">\(\mathcal P\)</span>？ <span class="math inline">\(\mathcal F\)</span>是一个<span class="math inline">\(\sigma-\)</span>代数，而<span class="math inline">\(\mathcal P\)</span>是一个概率测度，它们需要满足的属性都比较复杂，如果每次构建概率空间的时候都逐条验证这些属性，就太麻烦了。 因此，就像线性变换可以通过基上的变换确定、一个空间的拓扑可以通过拓扑基来确定一样，我们能不能找到一个<span class="math inline">\(\mathcal F\)</span>和<span class="math inline">\(\mathcal P\)</span>的&quot;基&quot;， 使得我们只需要在一个相对较小的空间中定义某种函数，就能把它唯一扩张为整个<span class="math inline">\(\mathcal F\)</span>上测的测度？（就像我们定义基上的函数，就能扩张成全空间上的线性变换）</p>
+<p>这一节就是要说明，这是可以做到的，主要的结论是下面这个定理：</p>
+<p>如果<span class="math inline">\(\mathcal S\)</span>是一个半代数，<span class="math inline">\(\mu\)</span>定义在<span class="math inline">\(\mathcal S\)</span>上的非负函数，且满足</p>
 <ol type="1">
-<li><p><span class="math inline">\(\forall A, B \in \mathscr A\)</span>: <span class="math inline">\(A\cap B \in \mathscr A\)</span>.</p></li>
-<li><p><span class="math inline">\(\forall \left\{ A_i \right\}\subset\mathscr A\)</span>: <span class="math inline">\(\bigcup_{i\ge 1} A_i \in \mathscr A\)</span>.</p></li>
+<li><p><span class="math inline">\(\mu(\emptyset) = 0\)</span>。</p></li>
+<li><p>对于不交的有限个集合<span class="math inline">\(S_i\in \mathcal S: \mu(\bigcup_i S_i) = \sum_i \mu(S_i)\)</span>。（有限可加性）</p></li>
+<li><p>对于不交的可数个集合<span class="math inline">\(S_i\in\mathcal S: \mu(\bigcup_i S_i) \leq \sum_i \mu(S_i)\)</span>。（可数次可加性）</p></li>
 </ol>
-<p><span id="sigma-alg" label="sigma-alg">[sigma-alg]</span></p>
+<p>记<span class="math inline">\(\mathcal S\)</span>生成的代数为<span class="math inline">\(\bar{\mathcal S}\)</span>，则<span class="math inline">\(\mu\)</span>唯一确定一个在<span class="math inline">\(\bar{\mathcal S}\)</span>上的扩张<span class="math inline">\(\bar\mu\)</span>，且<span class="math inline">\(\bar \mu\)</span>是<span class="math inline">\(\bar{\mathcal S}\)</span>上的测度。 特别地，如果<span class="math inline">\(\bar\mu\)</span>是<span class="math inline">\(\sigma-\)</span>有限的，则唯一存在一个<span class="math inline">\(\mu\)</span>在<span class="math inline">\(\sigma(\mathcal S)\)</span>上的扩张，且这个扩张是一个测度。 [[main thm]]</p>
+<p>在定理的陈述中出现了几个陌生的概念，我们将马上给出它们的定义：</p>
+<p>一个<em>半代数是指满足以下性质的类<span class="math inline">\(\mathcal S\)</span>：</em></p>
+<ol type="1">
+<li><p><span class="math inline">\(S,T\in\mathcal S \Rightarrow S\cap T\in \mathcal S\)</span>。（对交运算封闭）</p></li>
+<li><p><span class="math inline">\(S\in\mathcal S\Rightarrow S^c\)</span>是<span class="math inline">\(\mathcal S\)</span>中集合的有限交。</p></li>
+</ol>
+<p>[[semialgebra]]</p>
+<p>半代数的定义看上去并不自然，但其实这种结构很常见。举个例子：由<span class="math inline">\(\mathbb R\)</span>上的左开右闭区间加上空集构成的类<span class="math inline">\(\left\{ (a,b]|-\infty\le a&lt; b \le-\infty \right\}\)</span>就是一个半代数。 它对交运算的封闭性显然，而且每个元素的补集都可以写成<span class="math inline">\((-\infty,a]\cup(b,+\infty)\)</span>。我们将要介绍的Lebesgue-Stieljes测度就是通过定义在这个半代数上生成的。</p>
+<p>一个<em>代数是指满足以下性质的类<span class="math inline">\(\mathcal A\)</span>：</em></p>
+<ol type="1">
+<li><p><span class="math inline">\(S,T\in\mathcal S \Rightarrow S\cup T\in \mathcal A\)</span>。（对并运算封闭）</p></li>
+<li><p><span class="math inline">\(S\in\mathcal S\Rightarrow S^c\in\mathcal S\)</span>。</p></li>
+</ol>
+<p>[[semialgebra]]</p>
+<p>我们可以立刻看出，半代数对交运算也是封闭的，因为<span class="math inline">\(S\cap T=\left( S^c\cup T^c \right)^c\)</span>。也就是说，代数一定是半代数。事实上，一个半代数可以生成一个代数：</p>
+<p>由半代数<span class="math inline">\(\mathcal S\)</span><em>生成的代数<span class="math inline">\(\mathcal A\)</span>是指： <span class="math display">\[\left\{ E|E\text{是}\mathcal S \text{中元素的有限交} \right\}。\]</span> [[generated algebra]]</em></p>
+<p>容易验证，这的确是一个代数。 同时再结合<span class="math inline">\(\sigma-\text{代数}\)</span>的定义，我们能够看出，<span class="math inline">\(\sigma-\text{代数}\)</span>一定是代数。 而这个定理的意思就是说，只要在一个半代数上定义一个满足某些性质的函数，就能把它唯一扩张到这个半代数生成的<span class="math inline">\(\sigma\)</span>-代数上。</p>
+<p>这个定理的证明有些曲折，我们甚至需要引入一些额外的结构。我们没有时间一步步地推导，因此我们只会介绍证明的路线。</p>
+<h1 id="证明路径">证明路径</h1>
+<p>我们将证明分为三个部分：</p>
+<ol type="1">
+<li><p>证明<span class="math inline">\(\mu\)</span>在<span class="math inline">\(\mathcal A\)</span>上有唯一扩张。</p></li>
+<li><p>证明<span class="math inline">\(\mu\)</span>如果在<span class="math inline">\(\sigma(\mathcal A)\)</span>上有<span class="math inline">\(\sigma\)</span>-有限的扩张，则一定唯一。（需要引入<span class="math inline">\(\pi\)</span>-系统和<span class="math inline">\(\lambda\)</span>-系统）</p></li>
+<li><p>证明<span class="math inline">\(\mu\)</span>在<span class="math inline">\(\sigma(\mathcal A)\)</span>上存在<span class="math inline">\(\sigma\)</span>-有限的扩张。（需要引入外测度）</p></li>
+</ol>
+<p>第一部分的证明比较直接。注意到如果<span class="math inline">\(\bar\mu\)</span>是<span class="math inline">\(\mu\)</span>在<span class="math inline">\(\mathcal A\)</span>上的扩张，则必然有 <span class="math display">\[\bar\mu(A) = \sum_{i=1}^n \mu(B_i), \bigcup_{i=1}^n B_i = A, B_i\in \mathcal S 。\]</span> 可以验证，<span class="math inline">\(\bar\mu(A)\)</span>的值和<span class="math inline">\(B_i\)</span>的选取无关，因此上面的定义是良好的。 接下来只需要证明，<span class="math inline">\(\bar\mu\)</span>的确是<span class="math inline">\(\mathcal A\)</span>上的测度。 <span class="math inline">\(\bar\mu\)</span>的定义其实就是有限可加性，因此我们只需要证明可数可加性。 而对于可数可加性，我们已经有一个方向的不等式成立了，因为<span class="math inline">\(\mathcal S\)</span>中的可数次可加性能够推出<span class="math inline">\(\mathcal A\)</span>中的可数次可加性。 因此我们只需要证明对可数无穷个不相交的<span class="math inline">\(B_i\in\mathcal A, \bigcup_i B_i \in \mathcal A\)</span>： <span class="math display">\[\bar\mu(\bigcup_i B_i) \ge \sum_i \bar\mu(B_i) 。\]</span> 注意到<span class="math inline">\(\bar\mu\)</span>在<span class="math inline">\(\mathcal A\)</span>中的有限可加性和正定性表明<span class="math display">\[\bar\mu(\bigcup_{i=1}^\infty) = \sum_{i=1}^n\bar\mu(B_i) + \bar\mu\left(\bigcup_{i=n+1}^\infty B_i\right)，\]</span> 令<span class="math inline">\(n\to\infty\)</span>，就得到了想要的不等式，第一部分证完。</p>
+<p><em>下证唯一性</em>。我们需要先引入<span class="math inline">\(\pi\)</span>-系统和<span class="math inline">\(\lambda\)</span>-系统的概念。</p>
+<p>一个类被称为<span class="math inline">\(\pi\)</span>-系统，如果它对有限交运算封闭。 [[pi system]]</p>
+<p>一个<span class="math inline">\(\lambda\)</span>-系统是指满足以下性质的类<span class="math inline">\(\mathcal L\)</span>:</p>
+<ol type="1">
+<li><p><span class="math inline">\(\emptyset\in \mathcal L\)</span>。</p></li>
+<li><p><span class="math inline">\(S,T\in \mathcal L, S\subset L \Rightarrow L-S\in \mathcal L\)</span>。（对真减运算封闭）</p></li>
+<li><p><span class="math inline">\(A_n\in\mathcal L, A_n \uparrow A \Rightarrow A\in \mathcal L\)</span>。（对上极限封闭）</p></li>
+</ol>
+<p>[[lambda system]]</p>
+<p>可以看出，这两个概念似乎把<span class="math inline">\(\sigma\)</span>-代数的性质分成了两部分，<span class="math inline">\(\pi\)</span>-系统展现了对并运算封闭的性质，而<span class="math inline">\(\lambda\)</span>-系统展现了其他部分。 那么，通过某种方式对<span class="math inline">\(\pi\)</span>-系统和<span class="math inline">\(\lambda\)</span>-系统进行组合，是否就能够得到一个<span class="math inline">\(\sigma\)</span>-系统呢？下面这个关键定理就说明了这个问题：</p>
+<p>如果<span class="math inline">\(\mathcal P\)</span>是一个<span class="math inline">\(\pi\)</span>-系统，而<span class="math inline">\(\mathcal L\)</span>是一个包含<span class="math inline">\(\mathcal P\)</span>的<span class="math inline">\(\lambda\)</span>-系统，则<span class="math inline">\(\mathcal L\supset \sigma(\mathcal P)\)</span>。 [[pi-lambda]]</p>
+<p>也就是说，包含一个<span class="math inline">\(\pi\)</span>-系统的<span class="math inline">\(\lambda\)</span>系统一定包含这个<span class="math inline">\(\pi\)</span>-系统的生成<span class="math inline">\(\sigma\)</span>-代数。 注意到因为代数对并运算封闭，因此代数是一个<span class="math inline">\(\pi\)</span>系统。 从而我们只需要证明这个命题：如果两个测度在一个代数上相同且<span class="math inline">\(\sigma\)</span>-有限，那么这两个测度在这个代数生成的<span class="math inline">\(\lambda\)</span>-系统上相同。 下面的定理就说明了这件事情：</p>
+<p>如果<span class="math inline">\(\mathcal P\)</span>是一个<span class="math inline">\(\pi\)</span>-系统，而<span class="math inline">\(\nu_1,\nu_2\)</span>是在<span class="math inline">\(\sigma(\mathcal P)\)</span>上有定义的测度，<span class="math inline">\(\nu_1,\nu_2\)</span>在<span class="math inline">\(\mathcal P\)</span>上相等， 并且存在集合列<span class="math inline">\(A_n\in \mathcal P\)</span>：<span class="math inline">\(A_n\uparrow \Omega\)</span>且<span class="math inline">\(\mu_i(A_n)&lt;\infty\)</span>。 那么<span class="math inline">\(\nu_1, \nu_2\)</span>在<span class="math inline">\(\sigma(\mathcal P)\)</span>上相等。 [[pi-lambda agree thm]] 我们关心的情况是：<span class="math inline">\(\mathcal P\)</span>是一个代数，而<span class="math inline">\(\nu_i\)</span>是<span class="math inline">\(\mathcal P\)</span>上的<span class="math inline">\(\sigma\)</span>-有限测度。容易验证，这个定理的条件是满足的。由<span class="math inline">\(\ref{pi-lambda}\)</span>就能推出， 一个代数上的<span class="math inline">\(\sigma\)</span>-有限测度在这个代数生成的<span class="math inline">\(\sigma\)</span>-代数上如果有扩张，则这个扩张是唯一的。 这就证明了定理的第二部分。</p>
+<p><em>下证存在性</em>。我们要先引入外测度的概念：</p>
+<p>外测度<span class="math inline">\(\mu^*\)</span>是<span class="math inline">\(2^\Omega \to [0,\infty]\)</span>的函数，满足：</p>
+<ol type="1">
+<li><p><span class="math inline">\(\mu^*(\emptyset) = 0\)</span>。</p></li>
+<li><p><span class="math inline">\(E\supset FA\Rightarrow \mu^*(E)\ge \mu^*(F)\)</span>。（单调性）</p></li>
+<li><p><span class="math inline">\(F = \bigcup_i F_i \Rightarrow \mu^*(F)\le \sum_i \mu^*(F_i))\)</span>。（次可加性）</p></li>
+</ol>
+<p><span class="math inline">\(f\subset\Omega\)</span>被称为在<span class="math inline">\(\mu^*\)</span>下可测的，如果 <span class="math display">\[\forall E\subset \Omega: \mu^*(E) = \mu^*(E\cap F^c) + \mu^*(E\cap F)\]</span> [[def:outer measure]]</p>
+<p>外测度在某种程度上放宽了测度的条件，把可加性换成了次可加性，而且对全集的每个子集都有定义。而可测集合相当于在某种程度上把去掉的可加性又一某种形式保留了。 虽然可测集合的定义比较奇怪，但在证明中这个性质还是很好用的。 外测度的可测集有一个很好的性质，让我们能够用它证明定理的最后一部分：</p>
+<p>由外测度<span class="math inline">\(\mu^*\)</span>的可测集构成的类<span class="math inline">\(\mathcal M\)</span>是个<span class="math inline">\(\sigma\)</span>-代数，并且<span class="math inline">\(\mu^*\)</span>是<span class="math inline">\(\mathcal M\)</span>上的测度。 [[thm:outer measure to measure]] 有了这个定理，我们就能够立即证明最后一部分。只要能够把一个代数<span class="math inline">\(\mathcal A\)</span>上的测度<span class="math inline">\(\mu\)</span>扩张成<span class="math inline">\(2^\Omega\)</span>上的外测度<span class="math inline">\(\mu^*\)</span>， 并且<span class="math inline">\(\mathcal A\)</span>中的集合都是可测的，那么上面的定理就让我们免费获得了一个<span class="math inline">\(\sigma(\mathcal A)\)</span>上的测度。 我们可以如下定义<span class="math inline">\(\mu^*\)</span>： <span class="math display">\[\mu^*(E) := \inf_{A_i\in\mathcal A, \bigcup_i A_i \supset E} \sum_i \mu(A_i)\]</span> 可以验证，<span class="math inline">\(\mu^*\)</span>是一个外测度，在<span class="math inline">\(\mathcal A\)</span>上可测并且和原测度相等。定理的最后一部分就证完了。</p>
 
   </div>
 </article>
@@ -184,22 +237,22 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%AE%9A%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text">基本定义</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%81%E6%98%8E%E8%B7%AF%E5%BE%84"><span class="toc-number">2.</span> <span class="toc-text">证明路径</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/08/14/probability/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/14/probability/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/14/probability/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/14/probability/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://example.com/2021/08/14/probability/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/14/probability/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/14/probability/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/14/probability/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/14/probability/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/14/probability/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/14/probability/&t="><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/14/probability/&text=概率论"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/14/probability/&title=概率论"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/14/probability/&is_video=false&description=概率论"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=概率论&body=Check out this article: http://example.com/2021/08/14/probability/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/14/probability/&title=概率论"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/14/probability/&title=概率论"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/14/probability/&title=概率论"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/14/probability/&title=概率论"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/14/probability/&name=概率论&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/14/probability/&t=概率论"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang=中文>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="2.1.1 独立性的定义和充分条件 在概率空间\((\Omega, \mathcal F, P)\)中：  有限个\(\mathcal F\)​​​​的子类\(\mathcal A_i\)​​​是独立的，如果\(\forall E_i\in \mathcal A_i, i\in I\subset\{1, ... n\}: P(\bigcup_i A_i) &#x3D; \prod_i P(E_i)\)​​​">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Durrett Chapter 2.1 - 独立性">
+<meta property="og:url" content="http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/index.html">
+<meta property="og:site_name" content="-margin-">
+<meta property="og:description" content="2.1.1 独立性的定义和充分条件 在概率空间\((\Omega, \mathcal F, P)\)中：  有限个\(\mathcal F\)​​​​的子类\(\mathcal A_i\)​​​是独立的，如果\(\forall E_i\in \mathcal A_i, i\in I\subset\{1, ... n\}: P(\bigcup_i A_i) &#x3D; \prod_i P(E_i)\)​​​">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-08-15T04:13:04.000Z">
+<meta property="article:modified_time" content="2021-08-15T08:46:40.342Z">
+<meta property="article:author" content="gaussrz">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Durrett Chapter 2.1 - 独立性</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2021/08/14/probability/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/&text=Durrett Chapter 2.1 - 独立性"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/&title=Durrett Chapter 2.1 - 独立性"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/&is_video=false&description=Durrett Chapter 2.1 - 独立性"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Durrett Chapter 2.1 - 独立性&body=Check out this article: http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/&title=Durrett Chapter 2.1 - 独立性"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/&title=Durrett Chapter 2.1 - 独立性"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/&title=Durrett Chapter 2.1 - 独立性"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/&title=Durrett Chapter 2.1 - 独立性"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/&name=Durrett Chapter 2.1 - 独立性&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/&t=Durrett Chapter 2.1 - 独立性"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8B%AC%E7%AB%8B%E6%80%A7%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%85%85%E5%88%86%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">2.1.1 独立性的定义和充分条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8B%AC%E7%AB%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%88%86%E5%B8%83%E5%92%8C%E6%9C%9F%E6%9C%9B"><span class="toc-number">2.</span> <span class="toc-text">2.1.2 独立随机变量的分布和期望</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%92%8C%E7%9A%84%E5%88%86%E5%B8%83"><span class="toc-number">3.</span> <span class="toc-text">2.1.3 随机变量和的分布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E7%8B%AC%E7%AB%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F"><span class="toc-number">4.</span> <span class="toc-text">2.1.4 构造独立随机变量</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Durrett Chapter 2.1 - 独立性
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">gaussrz</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-08-15T04:13:04.000Z" itemprop="datePublished">2021-08-15</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="独立性的定义和充分条件">2.1.1 独立性的定义和充分条件</h3>
+<p>在概率空间<span class="math inline">\((\Omega, \mathcal F, P)\)</span>中：</p>
+<ul>
+<li>有限个<span class="math inline">\(\mathcal F\)</span>​​​​的子类<span class="math inline">\(\mathcal A_i\)</span>​​​是独立的，如果<span class="math inline">\(\forall E_i\in \mathcal A_i, i\in I\subset\{1, ... n\}: P(\bigcup_i A_i) = \prod_i P(E_i)\)</span>​​​​。</li>
+<li>有限个随机变量<span class="math inline">\(X_i\)</span>​​​是独立的，如果<span class="math inline">\(\sigma(X_i)\)</span>​​​​是独立的。</li>
+</ul>
+<p>事件之间的独立可以看作类之间独立的特殊情况。</p>
+<p>独立性表示概率测度<span class="math inline">\(\mathcal P\)</span>在<span class="math inline">\(\mathcal F\)</span>的一些子类中具有类似乘积测度的性质。立刻可以得出，如果<span class="math inline">\(\mathcal A, \mathcal B\)</span>是独立的，且<span class="math inline">\(X\in \mathcal A, Y\in \mathcal B\)</span>，则<span class="math inline">\(X, Y\)</span>也是独立的。在<span class="math inline">\(\mathcal F\)</span>​​上，<span class="math inline">\(P\)</span>​​满足可数可加性，因此可以推出，如果<span class="math inline">\(E_i\in \mathcal F, i\in \mathbb N\)</span>​是独立的，则<span class="math inline">\(\mathcal E_i = \{E_i^c, E_i\}\)</span>​是独立的<span class="math inline">\(\sigma\)</span>​-代数，从而<span class="math inline">\(\chi(E_i)\)</span>是独立的随机变量。</p>
+<p>接下来我们尝试将上一段中的想法发扬光大，考虑当有限个类<span class="math inline">\(\mathcal A_i\subset \mathcal F,i=1,\dots, n\)</span>独立时，尝试推出更大的类之间的独立性。自然的想法是试图将独立性推广到<span class="math inline">\(\sigma(\mathcal A_i)\)</span>上，但要获得这样的结果需要对<span class="math inline">\(\mathcal A_i\)</span>做一些限制 。根据著名的<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Dynkin_system">Dynkin <span class="math inline">\(\pi\)</span>-<span class="math inline">\(\lambda\)</span>​​定理</a>，我们有以下定理。</p>
+<blockquote>
+<p><strong>定理：</strong>如果<span class="math inline">\(\mathcal A_i, i=1,\dots, n\)</span>​是独立的，而且每个<span class="math inline">\(\mathcal A_i\)</span>是<span class="math inline">\(\pi\)</span>-系统，则<span class="math inline">\(\sigma(A_i)\)</span>​是独立的。</p>
+</blockquote>
+<p>只需要证明<span class="math inline">\(\mathcal L(\mathcal A_i)\)</span>是独立的即可。方便起见，我们只需证明<span class="math inline">\(\mathcal L(\mathcal A_1), \mathcal A_2,...,\mathcal A_n\)</span>​是独立的，再归纳即可得出结果。容易证明：</p>
+<ul>
+<li>如果<span class="math inline">\(E, F\in \mathcal F,E\subset F ,\mathcal A\subset \mathcal F\)</span>​，<span class="math inline">\(E, F\)</span>​和<span class="math inline">\(\mathcal A\)</span>​​独立，则<span class="math inline">\(E-F\)</span>和<span class="math inline">\(\mathcal E\)</span>独立。</li>
+<li>如果<span class="math inline">\(E_i\in \mathcal F(i\in \mathbb N), E_i\uparrow, \mathcal A\subset \mathcal F\)</span>​​，且<span class="math inline">\(\{E_i\}\)</span>​和<span class="math inline">\(\mathcal A\)</span>​​独立，​则<span class="math inline">\(\lim_{i\to\infty}E_i\)</span>和<span class="math inline">\(\mathcal A\)</span>独立。</li>
+</ul>
+<p>其中第一条性质由<span class="math inline">\(P\)</span>的可加性保证，第二条由<span class="math inline">\(P\)</span>的连续性保证。之所以要求<span class="math inline">\(\mathcal A_i\)</span>是<span class="math inline">\(\lambda\)</span>-系统，是因为独立性在一般的交（或并）之下不会保持。但独立性对包含减法是不变的，所以能够借助<span class="math inline">\(\pi\)</span>-<span class="math inline">\(\lambda\)</span>​定理。</p>
+<p>这条定理也表明，在判断一系列<span class="math inline">\(\sigma\)</span>-代数是否独立时，只需判断生成它们的<span class="math inline">\(\pi\)</span>​-系统的独立性即可。一个例子是要判断有限个随机变量<span class="math inline">\(X_i\)</span>的独立性，只要判断<span class="math inline">\(\mathcal P_i = \{X_i\le \alpha |\alpha\in (-\infty,+\infty] \}\)</span>的独立性。</p>
+<p>这条定理也可以推出，如果<span class="math inline">\(\mathcal F _{i, j},1\le j\le m(i)\)</span>​是有限个独立的<span class="math inline">\(\sigma\)</span>​-代数，则<span class="math inline">\(\sigma(\bigcup_j \mathcal F_{i,j})\)</span>​也是独立的。也就是说，对于<span class="math inline">\(\mathbb R^{m(i)}\to \mathbb R\)</span>​的可测函数<span class="math inline">\(f_i\)</span>​​​，和有限个独立的随机变量<span class="math inline">\(X_{i, j}, 1\le j\le m(i)\)</span> ，<span class="math inline">\(f_i(X_1,...,X_{m(i)})\)</span>​​是独立的随机变量。​</p>
+<h3 id="独立随机变量的分布和期望">2.1.2 独立随机变量的分布和期望</h3>
+<p>根据独立性的定义和<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Fubini%27s_theorem">Fubini&amp;Toenelli定理</a>，容易证明，如果对于有限个独立的随机变量<span class="math inline">\(X_1, ..., X_n\)</span>​​有分布<span class="math inline">\(\mu_1, ... , \mu_n\)</span>​​，则​：</p>
+<ul>
+<li><span class="math inline">\((X_1,...,X_n)\)</span>有分布<span class="math inline">\(\mu_1\times...\times\mu_n\)</span>。</li>
+<li>对于<span class="math inline">\(\mathbb R^n\to \mathbb R\)</span>上的可测函数<span class="math inline">\(f\)</span>，有<span class="math inline">\(Ef(X_1,...,X_n)=\int\cdots\int f(x_1,...,x_n)\mu_1(dx_1)...\mu_1(dx_n)\)</span>。特别地，如果<span class="math inline">\(f(x_1,...,x_n)=f(x_1)...f(x_n)\)</span>，且<span class="math inline">\(f_i\ge 0\)</span>（Toenelli）或<span class="math inline">\(E|f_i(X_i)|\le \infty\)</span>（Fubini），则<span class="math inline">\(Ef(X_1,...,X_n)=Ef_1(X_1)...Ef_n(X_n)\)</span>​​。选取<span class="math inline">\(f_i=\mathrm{id}\)</span>，就能得到对于随机变量的积的相应结果。</li>
+</ul>
+<p>即使有<span class="math inline">\(EXEY=EXY\)</span>成立，<span class="math inline">\(X,Y\)</span>也不一定独立，满足这个等式的随机变量<span class="math inline">\(X,Y\)</span>被成为<strong>无关的</strong>。</p>
+<h3 id="随机变量和的分布">2.1.3 随机变量和的分布</h3>
+<p>这一节的内容是中心极限定理的基础。主定理的形式很简单：如果<span class="math inline">\(X, Y\)</span>​是无关的随机变量，分别具有累积分布函数<span class="math inline">\(F,G\)</span>​，则<span class="math inline">\(P(X+Y\le z)=\int F(z-y)dG(y)=F*G(z)\)</span>​，如果<span class="math inline">\(x, y\)</span>​具有概率密度函数<span class="math inline">\(f, g\)</span>​，则<span class="math inline">\(X+Y\)</span>的概率密度函数是<span class="math inline">\(f*g\)</span>。</p>
+<p>本节还证明了Gamma分布和正态分布的可加性：<span class="math inline">\(\Gamma(\alpha, \lambda)+\Gamma(\beta, \lambda)=\Gamma(\alpha+\beta, \lambda)\)</span>，<span class="math inline">\(\mathcal N(\mu, a)+\mathcal N(\nu, b)=\mathcal N(\mu+\nu, a+b)\)</span>。</p>
+<h3 id="构造独立随机变量">2.1.4 构造独立随机变量</h3>
+<p>构造有限个服从累积分布函数为<span class="math inline">\(F_1,...,F_n\)</span>的独立随机变量是容易的，只需定义其为<span class="math inline">\(\mathbb R^n\)</span>​​​​​上相应的乘积测度即可。对于无穷个独立随机实值变量的情况，<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Kolmogorov_extension_theorem">Kolmogrov延拓定理</a>保证了其存在性。</p>
+<p>对于一般测度空间<span class="math inline">\((S, \mathcal S)\)</span>​上的随机变量，Kolmogrov延拓定理不一定成立。该定理成立的一个充分条件是存在<span class="math inline">\((\mathbb R, \mathcal R)\)</span>和<span class="math inline">\((S, \mathcal S)\)</span>之间的可测双射。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8B%AC%E7%AB%8B%E6%80%A7%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%85%85%E5%88%86%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">2.1.1 独立性的定义和充分条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8B%AC%E7%AB%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%88%86%E5%B8%83%E5%92%8C%E6%9C%9F%E6%9C%9B"><span class="toc-number">2.</span> <span class="toc-text">2.1.2 独立随机变量的分布和期望</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%92%8C%E7%9A%84%E5%88%86%E5%B8%83"><span class="toc-number">3.</span> <span class="toc-text">2.1.3 随机变量和的分布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E7%8B%AC%E7%AB%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F"><span class="toc-number">4.</span> <span class="toc-text">2.1.4 构造独立随机变量</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/&text=Durrett Chapter 2.1 - 独立性"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/&title=Durrett Chapter 2.1 - 独立性"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/&is_video=false&description=Durrett Chapter 2.1 - 独立性"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Durrett Chapter 2.1 - 独立性&body=Check out this article: http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/&title=Durrett Chapter 2.1 - 独立性"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/&title=Durrett Chapter 2.1 - 独立性"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/&title=Durrett Chapter 2.1 - 独立性"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/&title=Durrett Chapter 2.1 - 独立性"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/&name=Durrett Chapter 2.1 - 独立性&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/&t=Durrett Chapter 2.1 - 独立性"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021
+    gaussrz
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

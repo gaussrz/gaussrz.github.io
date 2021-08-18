@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang=中文>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="弱大数定律关注的是什么时候随机变量序列依概率收敛，本节会从比较容易证明的强条件开始，逐渐过渡到较弱的条件。 这里有必要插入一些容易证明的事实：  一系列方差有限的不相关的随机变量之和的二阶矩等于这些随机变量的方差之和。  和期望的天生线性不同，如果要把方差内的加号提出来，必须要增加一些条件。  如果\(\alpha&gt;\beta\)，则\(X\)的\(\alpha\)阶矩存在可以推出\(\be">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Durrett Chapter 2.2 - 若大数定律们">
+<meta property="og:url" content="http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/index.html">
+<meta property="og:site_name" content="-margin-">
+<meta property="og:description" content="弱大数定律关注的是什么时候随机变量序列依概率收敛，本节会从比较容易证明的强条件开始，逐渐过渡到较弱的条件。 这里有必要插入一些容易证明的事实：  一系列方差有限的不相关的随机变量之和的二阶矩等于这些随机变量的方差之和。  和期望的天生线性不同，如果要把方差内的加号提出来，必须要增加一些条件。  如果\(\alpha&gt;\beta\)，则\(X\)的\(\alpha\)阶矩存在可以推出\(\be">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-08-18T06:10:36.000Z">
+<meta property="article:modified_time" content="2021-08-18T10:05:47.037Z">
+<meta property="article:author" content="gaussrz">
+<meta property="article:tag" content="概率论">
+<meta property="article:tag" content="Durrett">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Durrett Chapter 2.2 - 若大数定律们</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&text=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&is_video=false&description=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Durrett Chapter 2.2 - 若大数定律们&body=Check out this article: http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&name=Durrett Chapter 2.2 - 若大数定律们&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&t=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%96%B9%E5%B7%AE%E7%9A%84%E8%AE%A8%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">基于方差的讨论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%AA%E6%96%AD"><span class="toc-number">2.</span> <span class="toc-text">截断</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Durrett Chapter 2.2 - 若大数定律们
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">gaussrz</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-08-18T06:10:36.000Z" itemprop="datePublished">2021-08-18</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Durrett/" rel="tag">Durrett</a>, <a class="tag-link-link" href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="tag">概率论</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>弱大数定律关注的是什么时候随机变量序列<strong>依概率收敛</strong>，本节会从比较容易证明的强条件开始，逐渐过渡到较弱的条件。</p>
+<p>这里有必要插入一些容易证明的事实：</p>
+<ul>
+<li>一系列方差有限的<strong>不相关</strong>的随机变量之和的二阶矩等于这些随机变量的方差之和。
+<ul>
+<li>和期望的天生线性不同，如果要把方差内的加号提出来，必须要增加一些条件。</li>
+</ul></li>
+<li>如果<span class="math inline">\(\alpha&gt;\beta\)</span>，则<span class="math inline">\(X\)</span>的<span class="math inline">\(\alpha\)</span>阶矩存在可以推出<span class="math inline">\(\beta\)</span>​阶矩存在（考虑<span class="math inline">\(\max\{|X|, 1\}\)</span>​即可）。​</li>
+<li>任何阶矩的收敛都可以推出依概率收敛。</li>
+</ul>
+<h3 id="基于方差的讨论">基于方差的讨论</h3>
+<blockquote>
+<p><strong>定理：</strong>（最简单的弱大数定律）</p>
+<p>如果<span class="math inline">\(X_1, X_2, ...\)</span>​是期望为<span class="math inline">\(\mu\)</span>的二阶矩存在且有一致的上界<span class="math inline">\(C&lt;\infty\)</span>的无关随机变量，设<span class="math inline">\(S_n=X_1+...+X_n\)</span>，则<span class="math inline">\((S_n-\mu)/n\)</span>在<span class="math inline">\(L^2\)</span>意义下收敛到<span class="math inline">\(\mu\)</span>，从而也依概率收敛到<span class="math inline">\(\mu\)</span>。​</p>
+</blockquote>
+<p>这个版本的弱大数定律虽然简单，但已经足够推出一些经典的结论，如<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bernstein_polynomial">Bernstein多项式</a>和“高维立方体几乎就是高维球的边界”。</p>
+<p>对这个定理稍加以推广。<span class="math inline">\(S_n\)</span>在定理中是一串特定的随机变量的部分和，现在<span class="math inline">\(S_n\)</span>可以是一串没有关联的随机变量，假设<span class="math inline">\(\mathrm{var} S_n=\sigma_n^2&lt;\infty\)</span>​。​​只需取<span class="math inline">\(b_n\)</span>使得<span class="math inline">\(\sigma_n^2/b_n^2\)</span>趋于<span class="math inline">\(0\)</span>，即可满足<span class="math inline">\((S_n-ES_n)/b_n\)</span>依概率收敛到<span class="math inline">\(0\)</span>​。​​</p>
+<h3 id="截断">截断</h3>
+<p>对于一些二阶或一阶矩并不有限的随机变量，要构造出合适的弱大数定律，就需要借助截断的技术。截断后的随机变量方差一定有限，再搭配Chebyshev不等式就能得出下面的结论：</p>
+<blockquote>
+<p><strong>定理：</strong>对每个<span class="math inline">\(n\ge 1\)</span>，<span class="math inline">\(X_{n,k}(1\le k\le n)\)</span>是独立的随机变量，令<span class="math inline">\(b_n&gt;0\)</span>，且<span class="math inline">\(\bar X_{n,k}=X_{n,k}\chi_{|X_{n,k}|\le b_n}\)</span>​，并满足：</p>
+<ol type="1">
+<li><span class="math inline">\(\sum_{k=1}^n P(X_{n,k}&gt;b_n)\to 0\)</span>​；</li>
+<li><span class="math inline">\(b_n^{-2}\sum_{k=1}^nEX_{n,k}^2\to 0\)</span>。​</li>
+</ol>
+<p>记<span class="math inline">\(S_n=X_{n,1}+...+X_{n,n}\)</span>​​， <span class="math inline">\(a_n=E\bar X_{1,n}+...+E\bar X_{n,n}\)</span>，则有 <span class="math display">\[
+\frac{S_n-a_n}{b_n}\xrightarrow p 0.
+\]</span></p>
+</blockquote>
+<p>注意这里的<span class="math inline">\(a_n\)</span>​​不一定有极限。考虑i.i.d的随机变量<span class="math inline">\(X_i\)</span>​​​，如果我们取<span class="math inline">\(b_n=n\)</span>​​​，则条件1变为<span class="math inline">\(nP(|X_1|&gt;n)\to 0\)</span>​​。并且，如果进一步有<span class="math inline">\(xP(|X_1|&gt;x)\to 0(x\to+\infty)\)</span>​​成立，则有 <span class="math display">\[
+n^{-1}E[\bar X_1^2]=n^{-1}\int_0^\infty 2yP(|\bar X_1|&gt;y)dy\le n^{-1}\int_0^n 2yP(|X_1|&gt;y)dy\to  0.
+\]</span> 这正好是条件2。所以得到了下面的定理：</p>
+<blockquote>
+<p><strong>定理：</strong>（i.i.d.的弱大数定律）</p>
+<p>如果<span class="math inline">\(X_1,X_2,...\)</span>​是一列i.i.d.的随机变量，且满足<span class="math inline">\(xP(|X_1|&gt;x)\to0(x\to+\infty)\)</span>​，记<span class="math inline">\(S_n=X_1+...+X_n\)</span>，<span class="math inline">\(\mu_n=E\bar X_1+...+E\bar X_n\)</span>，则<span class="math inline">\(S_n/n-\mu_n\to0(n\to\infty)\)</span>。​​​​</p>
+</blockquote>
+<p>定理中的条件也是存在满足<span class="math inline">\(S_n/n-a_n\to 0\)</span>的<span class="math inline">\(a_n\)</span>​的必要条件，这里不给出证明。</p>
+<p>对于期望有限的随机变量<span class="math inline">\(X\)</span>​，一定有<span class="math inline">\(xP(|X|&gt;x)\to 0(x\to+\infty)\)</span>​​​，所以对于期望有限的i.i.d.随机变量，弱大数定律也成立。这也是弱大数定律最常见的形式。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%96%B9%E5%B7%AE%E7%9A%84%E8%AE%A8%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">基于方差的讨论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%AA%E6%96%AD"><span class="toc-number">2.</span> <span class="toc-text">截断</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&text=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&is_video=false&description=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Durrett Chapter 2.2 - 若大数定律们&body=Check out this article: http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&name=Durrett Chapter 2.2 - 若大数定律们&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&t=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021
+    gaussrz
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

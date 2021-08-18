@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content="弱大数定律关注的是什么时候随机变量序列依概率收敛，本节会从比较容易证明的强条件开始，逐渐过渡到较弱的条件。 这里有必要插入一些容易证明的事实：  一系列方差有限的不相关的随机变量之和的二阶矩等于这些随机变量的方差之和。  和期望的天生线性不同，如果要把方差内的加号提出来，必须要增加一些条件。  如果\(\alpha&gt;\beta\)，则\(X\)的\(\alpha\)阶矩存在可以推出\(\be">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Durrett Chapter 2.2 - 若大数定律们">
+<meta property="og:title" content="Durrett Chapter 2.2 - 弱大数定律们">
 <meta property="og:url" content="http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/index.html">
 <meta property="og:site_name" content="-margin-">
 <meta property="og:description" content="弱大数定律关注的是什么时候随机变量序列依概率收敛，本节会从比较容易证明的强条件开始，逐渐过渡到较弱的条件。 这里有必要插入一些容易证明的事实：  一系列方差有限的不相关的随机变量之和的二阶矩等于这些随机变量的方差之和。  和期望的天生线性不同，如果要把方差内的加号提出来，必须要增加一些条件。  如果\(\alpha&gt;\beta\)，则\(X\)的\(\alpha\)阶矩存在可以推出\(\be">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-08-18T06:10:36.000Z">
-<meta property="article:modified_time" content="2021-08-18T10:05:47.037Z">
+<meta property="article:modified_time" content="2021-08-18T10:09:10.948Z">
 <meta property="article:author" content="gaussrz">
 <meta property="article:tag" content="概率论">
 <meta property="article:tag" content="Durrett">
@@ -38,7 +38,7 @@
       
     
     <!-- title -->
-    <title>Durrett Chapter 2.2 - 若大数定律们</title>
+    <title>Durrett Chapter 2.2 - 弱大数定律们</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -100,16 +100,16 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&text=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&is_video=false&description=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Durrett Chapter 2.2 - 若大数定律们&body=Check out this article: http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&name=Durrett Chapter 2.2 - 若大数定律们&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&t=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&text=Durrett Chapter 2.2 - 弱大数定律们"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 弱大数定律们"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&is_video=false&description=Durrett Chapter 2.2 - 弱大数定律们"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Durrett Chapter 2.2 - 弱大数定律们&body=Check out this article: http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 弱大数定律们"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 弱大数定律们"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 弱大数定律们"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 弱大数定律们"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&name=Durrett Chapter 2.2 - 弱大数定律们&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&t=Durrett Chapter 2.2 - 弱大数定律们"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -126,7 +126,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        Durrett Chapter 2.2 - 若大数定律们
+        Durrett Chapter 2.2 - 弱大数定律们
     </h1>
 
 
@@ -227,16 +227,16 @@ n^{-1}E[\bar X_1^2]=n^{-1}\int_0^\infty 2yP(|\bar X_1|&gt;y)dy\le n^{-1}\int_0^n
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&text=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&is_video=false&description=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Durrett Chapter 2.2 - 若大数定律们&body=Check out this article: http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&name=Durrett Chapter 2.2 - 若大数定律们&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&t=Durrett Chapter 2.2 - 若大数定律们"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&text=Durrett Chapter 2.2 - 弱大数定律们"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 弱大数定律们"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&is_video=false&description=Durrett Chapter 2.2 - 弱大数定律们"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Durrett Chapter 2.2 - 弱大数定律们&body=Check out this article: http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 弱大数定律们"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 弱大数定律们"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 弱大数定律们"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&title=Durrett Chapter 2.2 - 弱大数定律们"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&name=Durrett Chapter 2.2 - 弱大数定律们&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/&t=Durrett Chapter 2.2 - 弱大数定律们"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

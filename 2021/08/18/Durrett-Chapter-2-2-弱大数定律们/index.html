@@ -14,10 +14,10 @@
 <meta property="og:description" content="弱大数定律关注的是什么时候随机变量序列依概率收敛，本节会从比较容易证明的强条件开始，逐渐过渡到较弱的条件。 这里有必要插入一些容易证明的事实：  一系列方差有限的不相关的随机变量之和的二阶矩等于这些随机变量的方差之和。  和期望的天生线性不同，如果要把方差内的加号提出来，必须要增加一些条件。  如果\(\alpha&gt;\beta\)，则\(X\)的\(\alpha\)阶矩存在可以推出\(\be">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-08-18T06:10:36.000Z">
-<meta property="article:modified_time" content="2021-08-18T10:09:10.948Z">
+<meta property="article:modified_time" content="2021-08-18T12:49:00.422Z">
 <meta property="article:author" content="gaussrz">
-<meta property="article:tag" content="概率论">
 <meta property="article:tag" content="Durrett">
+<meta property="article:tag" content="概率论">
 <meta name="twitter:card" content="summary">
     
     
@@ -84,6 +84,8 @@
     <br/>
     <span id="actions">
       <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
         <li><a class="icon" aria-label="Next post " href="/2021/08/15/Durrett-Chapter-2-%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
@@ -194,7 +196,7 @@ n^{-1}E[\bar X_1^2]=n^{-1}\int_0^\infty 2yP(|\bar X_1|&gt;y)dy\le n^{-1}\int_0^n
 <p><strong>定理：</strong>（i.i.d.的弱大数定律）</p>
 <p>如果<span class="math inline">\(X_1,X_2,...\)</span>​是一列i.i.d.的随机变量，且满足<span class="math inline">\(xP(|X_1|&gt;x)\to0(x\to+\infty)\)</span>​，记<span class="math inline">\(S_n=X_1+...+X_n\)</span>，<span class="math inline">\(\mu_n=E\bar X_1+...+E\bar X_n\)</span>，则<span class="math inline">\(S_n/n-\mu_n\to0(n\to\infty)\)</span>。​​​​</p>
 </blockquote>
-<p>定理中的条件也是存在满足<span class="math inline">\(S_n/n-a_n\to 0\)</span>的<span class="math inline">\(a_n\)</span>​的必要条件，这里不给出证明。</p>
+<p>定理中的条件也是存在满足<span class="math inline">\(S_n/n-a_n\to 0\)</span>的<span class="math inline">\(a_n\)</span>​​​​的必要条件，这里不给出证明。例如对于i.i.d.的<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cauchy_distribution">Cauchy分布</a>，就不存在这样的<span class="math inline">\(a_n\)</span>。</p>
 <p>对于期望有限的随机变量<span class="math inline">\(X\)</span>​，一定有<span class="math inline">\(xP(|X|&gt;x)\to 0(x\to+\infty)\)</span>​​​，所以对于期望有限的i.i.d.随机变量，弱大数定律也成立。这也是弱大数定律最常见的形式。</p>
 
   </div>

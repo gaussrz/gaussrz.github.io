@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang=中文>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Borel-Cantelli引理及其推论 Borel-Cantelli引理是测度论中的基本结论，其证明也很显然。  引理：（Borel-Cantelli） 如果\(\sum_{n&#x3D;1}^\infty P(A_n)&lt;\infty\)，则\(P(A_n \; i.o.)&#x3D;0\)。​  Borel-Cantelli定理可以用来证明实分析中的Riesz定理，Riesz定理揭示了a.s.收敛和依概率收">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Durrett Chapter 2.3-4 - 强大数定律">
+<meta property="og:url" content="http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/index.html">
+<meta property="og:site_name" content="-margin-">
+<meta property="og:description" content="Borel-Cantelli引理及其推论 Borel-Cantelli引理是测度论中的基本结论，其证明也很显然。  引理：（Borel-Cantelli） 如果\(\sum_{n&#x3D;1}^\infty P(A_n)&lt;\infty\)，则\(P(A_n \; i.o.)&#x3D;0\)。​  Borel-Cantelli定理可以用来证明实分析中的Riesz定理，Riesz定理揭示了a.s.收敛和依概率收">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-08-18T12:49:33.000Z">
+<meta property="article:modified_time" content="2021-08-19T10:36:09.414Z">
+<meta property="article:author" content="gaussrz">
+<meta property="article:tag" content="Durrett">
+<meta property="article:tag" content="概率论">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Durrett Chapter 2.3-4 - 强大数定律</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2021/08/18/Durrett-Chapter-2-2-%E5%BC%B1%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%BB%AC/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/&text=Durrett Chapter 2.3-4 - 强大数定律"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/&title=Durrett Chapter 2.3-4 - 强大数定律"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/&is_video=false&description=Durrett Chapter 2.3-4 - 强大数定律"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Durrett Chapter 2.3-4 - 强大数定律&body=Check out this article: http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/&title=Durrett Chapter 2.3-4 - 强大数定律"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/&title=Durrett Chapter 2.3-4 - 强大数定律"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/&title=Durrett Chapter 2.3-4 - 强大数定律"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/&title=Durrett Chapter 2.3-4 - 强大数定律"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/&name=Durrett Chapter 2.3-4 - 强大数定律&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/&t=Durrett Chapter 2.3-4 - 强大数定律"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#borel-cantelli%E5%BC%95%E7%90%86%E5%8F%8A%E5%85%B6%E6%8E%A8%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">Borel-Cantelli引理及其推论</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Durrett Chapter 2.3-4 - 强大数定律
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">gaussrz</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-08-18T12:49:33.000Z" itemprop="datePublished">2021-08-18</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Durrett/" rel="tag">Durrett</a>, <a class="tag-link-link" href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="tag">概率论</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="borel-cantelli引理及其推论">Borel-Cantelli引理及其推论</h3>
+<p>Borel-Cantelli引理是测度论中的基本结论，其证明也很显然。</p>
+<blockquote>
+<p><strong>引理：</strong>（Borel-Cantelli）</p>
+<p>如果<span class="math inline">\(\sum_{n=1}^\infty P(A_n)&lt;\infty\)</span>，则<span class="math inline">\(P(A_n \; i.o.)=0\)</span>。​</p>
+</blockquote>
+<p>Borel-Cantelli定理可以用来证明实分析中的Riesz定理，Riesz定理揭示了a.s.收敛和依概率收敛之间的关系。从而对于a.s.收敛容易证明的一些结论可以直接迁移到依概率收敛上。也可以用于证明下面的强大数定律：</p>
+<blockquote>
+<p><strong>定理：</strong>（<span class="math inline">\(4\)</span>阶矩有限的强大数定律）</p>
+<p><span class="math inline">\(X_i\)</span>是i.i.d.的随机变量，<span class="math inline">\(X_i=\mu, E[X_i^4]&lt;\infty\)</span>。记<span class="math inline">\(S_n=X_1+...+X_n\)</span>，则有<span class="math inline">\(S_n/n\xrightarrow{a.s.}\mu\)</span>。​​</p>
+</blockquote>
+<p><strong>证明：</strong>为计算简便，不妨设<span class="math inline">\(\mu=0\)</span>。此时有<span class="math inline">\(ES_n^4=nEX_1^4+3n(n-1)(EX_1^2)^2&lt;Cn^2\)</span>，<span class="math inline">\(C\)</span>为一由<span class="math inline">\(X_i\)</span>决定的正常数。从而Chebyshev不等式表明<span class="math inline">\(P(S_n/n&gt;\epsilon)&lt;ES_n^4/(n\epsilon)^4&lt;C/(n^2\epsilon^4)\)</span>，则有<span class="math inline">\(\sum_{n=1}^\infty P(S_n/n&gt;\epsilon)&lt;\infty\)</span>，Borel-Cantalli定理就表明<span class="math inline">\(P(S_n/n&gt;\epsilon\; i.o.)=0\)</span>，因为<span class="math inline">\(\epsilon\)</span>是任意的，故<span class="math inline">\(S_n/n\xrightarrow {a.s.}0\)</span>​。∎</p>
+<blockquote>
+<p><strong>引理：</strong>（第二Borel-Cantelli引理）</p>
+<p>如果事件<span class="math inline">\(A_n\)</span>是独立的，则<span class="math inline">\(\sum P(A_n) = \infty\implies P(A_n\;i.o.)=1\)</span>。​</p>
+</blockquote>
+<p>只需使用借助独立性证明<span class="math inline">\(A_n\)</span>只发生有限个的概率是<span class="math inline">\(0\)</span>即可，其中要用到不等式<span class="math inline">\(1-x&lt;e^{-x}\)</span>​。​第二引理可以用于证明下面的定理，可以看作强大数定律的反面：</p>
+<blockquote>
+<p><strong>定理：</strong>如果<span class="math inline">\(X_1,X_2,...\)</span>​i.i.d.且<span class="math inline">\(E|X_i|=\infty\)</span>，则<span class="math inline">\(P(|X_n|&gt;n\; i.o.)=1\)</span>​。所以如果记<span class="math inline">\(S_n=X_1+...+X_n\)</span>，则<span class="math inline">\(P(\lim S_n/n\text{存在且有限})=0\)</span>。</p>
+</blockquote>
+<p>只需要回忆<span class="math inline">\(E|X|&lt;\sum_{n=0}^\infty P(|X| &gt; n)\)</span>​，证明是显然的。</p>
+<p>下面的定理推广了第二Borel-Cantelli引理：</p>
+<blockquote>
+<p><strong>定理：</strong>如果<span class="math inline">\(A_1, A_2,...\)</span>是两两独立的事件，且<span class="math inline">\(\sum_{n=1}^\infty P(A_n)=\infty\)</span>，则 <span class="math display">\[
+\frac{\sum_{m=1}^n \chi_{A_m}}{\sum_{m=1}^n P(A_m)}\xrightarrow {a.s.}1.
+\]</span></p>
+</blockquote>
+<p>形象地说，这一定理表明只要一系列事件是两两独立，且概率之和为无穷，则它们在概率空间内几乎是“均匀散布”的。</p>
+<p><strong>证明：</strong>令<span class="math inline">\(X_n=\chi_{A_n}\)</span>，记<span class="math inline">\(S_n=X_1+...+X_n\)</span>，则就是要证<span class="math inline">\(S_n/ES_n \xrightarrow {a.s.} 1\)</span>。两两独立保证了<span class="math inline">\(\mathrm{var}S_n=\sum_{i=1}^n\mathrm{var}X_i\le \sum_{i=1}^n EX_i=ES_n\)</span>，从而Chebyshev不等式就表明<span class="math inline">\(S_n/ES_n\xrightarrow p 1\)</span>。接下来就要证明几乎必然收敛。取使得<span class="math inline">\(k^2\le ES_{n_k}\le k^2+1\)</span>的子列<span class="math inline">\(\{T_k\}\)</span>，代入前面的Chebyshev不等式，再由Borel-Cantelli引理就能得出<span class="math inline">\(T_k/ET_k\xrightarrow {a.s.} 1\)</span>。再通过<span class="math inline">\(T_{k}/ET_{k+1}\le S_k/ES_k\le T_{k+1}/ET_{k+1}\)</span>夹逼即可证完。∎</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#borel-cantelli%E5%BC%95%E7%90%86%E5%8F%8A%E5%85%B6%E6%8E%A8%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">Borel-Cantelli引理及其推论</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/&text=Durrett Chapter 2.3-4 - 强大数定律"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/&title=Durrett Chapter 2.3-4 - 强大数定律"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/&is_video=false&description=Durrett Chapter 2.3-4 - 强大数定律"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Durrett Chapter 2.3-4 - 强大数定律&body=Check out this article: http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/&title=Durrett Chapter 2.3-4 - 强大数定律"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/&title=Durrett Chapter 2.3-4 - 强大数定律"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/&title=Durrett Chapter 2.3-4 - 强大数定律"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/&title=Durrett Chapter 2.3-4 - 强大数定律"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/&name=Durrett Chapter 2.3-4 - 强大数定律&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/18/Durrett-Chapter-2-3-Borel-Canteli%E5%BC%95%E7%90%86/&t=Durrett Chapter 2.3-4 - 强大数定律"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021
+    gaussrz
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

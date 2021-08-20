@@ -14,7 +14,7 @@
 <meta property="og:description" content="Borel-Cantelli引理及其推论 Borel-Cantelli引理是测度论中的基本结论，其证明也很显然。  引理：（Borel-Cantelli） 如果\(\sum_{n&#x3D;1}^\infty P(A_n)&lt;\infty\)，则\(P(A_n \; i.o.)&#x3D;0\)。​  Borel-Cantelli定理可以用来证明实分析中的Riesz定理，Riesz定理揭示了a.s.收敛和依概率收">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-08-18T12:49:33.000Z">
-<meta property="article:modified_time" content="2021-08-19T10:36:09.414Z">
+<meta property="article:modified_time" content="2021-08-20T06:11:18.132Z">
 <meta property="article:author" content="gaussrz">
 <meta property="article:tag" content="Durrett">
 <meta property="article:tag" content="概率论">
@@ -114,7 +114,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#borel-cantelli%E5%BC%95%E7%90%86%E5%8F%8A%E5%85%B6%E6%8E%A8%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">Borel-Cantelli引理及其推论</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#borel-cantelli%E5%BC%95%E7%90%86%E5%8F%8A%E5%85%B6%E6%8E%A8%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">Borel-Cantelli引理及其推论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%BA%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">强大数定律</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -187,6 +187,15 @@
 </blockquote>
 <p>形象地说，这一定理表明只要一系列事件是两两独立，且概率之和为无穷，则它们在概率空间内几乎是“均匀散布”的。</p>
 <p><strong>证明：</strong>令<span class="math inline">\(X_n=\chi_{A_n}\)</span>，记<span class="math inline">\(S_n=X_1+...+X_n\)</span>，则就是要证<span class="math inline">\(S_n/ES_n \xrightarrow {a.s.} 1\)</span>。两两独立保证了<span class="math inline">\(\mathrm{var}S_n=\sum_{i=1}^n\mathrm{var}X_i\le \sum_{i=1}^n EX_i=ES_n\)</span>，从而Chebyshev不等式就表明<span class="math inline">\(S_n/ES_n\xrightarrow p 1\)</span>。接下来就要证明几乎必然收敛。取使得<span class="math inline">\(k^2\le ES_{n_k}\le k^2+1\)</span>的子列<span class="math inline">\(\{T_k\}\)</span>，代入前面的Chebyshev不等式，再由Borel-Cantelli引理就能得出<span class="math inline">\(T_k/ET_k\xrightarrow {a.s.} 1\)</span>。再通过<span class="math inline">\(T_{k}/ET_{k+1}\le S_k/ES_k\le T_{k+1}/ET_{k+1}\)</span>夹逼即可证完。∎</p>
+<h3 id="强大数定律">强大数定律</h3>
+<p>下面给出强大数定律的证明，这一证明来自Etemadi(1981)。</p>
+<blockquote>
+<p><strong>定理：</strong>（强大数定律）</p>
+<p><span class="math inline">\(X_1,X_2,...\)</span>​是两两独立的随机变量，<span class="math inline">\(E|X_i|&lt;\infty\)</span>​。记<span class="math inline">\(EX_i=\mu\)</span>，<span class="math inline">\(S_n=X_1+...+X_n\)</span>​​，则<span class="math inline">\(S_n/n\xrightarrow {a.s.}\mu\)</span>。</p>
+</blockquote>
+<p><strong>证明：</strong>第一步，对于二阶矩可能不存在的随机变量序列，我们先做截断。令<span class="math inline">\(Y_n=X_n\chi_{X_n\le k}\)</span>，<span class="math inline">\(T_n=Y_1+...+Y_n\)</span>。因为<span class="math inline">\(P(Y_k\neq X_k\; i.o.)=0\)</span>，所以只需证明<span class="math inline">\(T_n/n\xrightarrow {a.s.}\mu\)</span>​​。​</p>
+<p>第二步，估计<span class="math inline">\(\sum_{k=1}^\infty\mathrm{var}Y_k/k^2\)</span>，将方差变为<span class="math inline">\(\int_0^kP(|X_k|&gt;k)dk\)</span>​之后再调整积分顺序即可估计出上界<span class="math inline">\(4EX_1&lt;\infty\)</span>。</p>
+<p>第三步，不失一般性地假设<span class="math inline">\(X_k\ge0\)</span>，则<span class="math inline">\(\{T_k \}\uparrow\)</span>。有<span class="math inline">\(P(T_k-ET_k&gt;\epsilon k)\le (\epsilon k)^{-2}\mathrm{var}T_k\)</span>，通过选取合适的子列并借助第二步的结果，可以让<span class="math inline">\(\sum_{k=1}^\infty P(T_{m(k)}-ET_{m(k)}&lt;\infty\)</span>，再用Borel-Cantelli和单调列夹逼的办法即可证明强大数定律。∎</p>
 
   </div>
 </article>
@@ -212,7 +221,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#borel-cantelli%E5%BC%95%E7%90%86%E5%8F%8A%E5%85%B6%E6%8E%A8%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">Borel-Cantelli引理及其推论</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#borel-cantelli%E5%BC%95%E7%90%86%E5%8F%8A%E5%85%B6%E6%8E%A8%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">Borel-Cantelli引理及其推论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%BA%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">强大数定律</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

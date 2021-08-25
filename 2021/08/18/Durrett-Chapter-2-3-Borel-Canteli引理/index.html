@@ -14,7 +14,7 @@
 <meta property="og:description" content="Borel-Cantelli引理及其推论 Borel-Cantelli引理是测度论中的基本结论，其证明也很显然。  引理：（Borel-Cantelli） 如果\(\sum_{n&#x3D;1}^\infty P(A_n)&lt;\infty\)，则\(P(A_n \; i.o.)&#x3D;0\)。​  Borel-Cantelli定理可以用来证明实分析中的Riesz定理，Riesz定理揭示了a.s.收敛和依概率收">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-08-18T12:49:33.000Z">
-<meta property="article:modified_time" content="2021-08-24T06:56:30.471Z">
+<meta property="article:modified_time" content="2021-08-25T06:25:23.834Z">
 <meta property="article:author" content="gaussrz">
 <meta property="article:tag" content="Durrett">
 <meta property="article:tag" content="概率论">
@@ -198,7 +198,20 @@
 <p><strong>证明：</strong>第一步，对于二阶矩可能不存在的随机变量序列，我们先做截断。令<span class="math inline">\(Y_n=X_n\chi_{X_n\le k}\)</span>，<span class="math inline">\(T_n=Y_1+...+Y_n\)</span>。因为<span class="math inline">\(P(Y_k\neq X_k\; i.o.)=0\)</span>，所以只需证明<span class="math inline">\(T_n/n\xrightarrow {a.s.}\mu\)</span>​​。​</p>
 <p>第二步，估计<span class="math inline">\(\sum_{k=1}^\infty\mathrm{var}Y_k/k^2\)</span>，将方差变为<span class="math inline">\(\int_0^kP(|X_k|&gt;k)dk\)</span>​之后再调整积分顺序即可估计出上界<span class="math inline">\(4EX_1&lt;\infty\)</span>。</p>
 <p>第三步，不失一般性地假设<span class="math inline">\(X_k\ge0\)</span>​，则<span class="math inline">\(\{T_k \}\uparrow\)</span>​。有<span class="math inline">\(P(T_k-ET_k&gt;\epsilon k)\le (\epsilon k)^{-2}\mathrm{var}T_k\)</span>​，通过选取合适的子列并借助第二步的结果，可以让<span class="math inline">\(\sum_{k=1}^\infty P(T_{m(k)}-ET_{m(k)})&lt;\infty\)</span>​，再用Borel-Cantelli和单调列夹逼的办法即可证明强大数定律。∎</p>
-<p>值得一提的是，强大数定律在<span class="math inline">\(EX_i=\infty\)</span>​时也是成立的。（注意这种情况和<span class="math inline">\(EX_i\)</span>不存在有本质的不同。）</p>
+<p>值得一提的是，强大数定律在<span class="math inline">\(EX_i=\infty\)</span>​时也是成立的，可以通过类似的截断技术证明。（注意这种情况和<span class="math inline">\(EX_i\)</span>不存在有本质的不同。）</p>
+<p>强大数定律可以用于证明「频率可以用于逼近概率」这一事实，形式地说，就是</p>
+<blockquote>
+<p><strong>定理：</strong>（Glivenko-Cantelli）</p>
+<p><span class="math inline">\(X_1,X_2,...\)</span>是i.i.d.的随机变量，累积分布函数为<span class="math inline">\(F\)</span>，定义<span class="math inline">\(F\)</span>的「估计函数」为 <span class="math display">\[
+F_n(x):=\frac1n \sum_{i=1}^n \chi_{X_i&lt;x}
+\]</span> 则有<span class="math inline">\(\sup_x|F_n(x)-F(x)|\xrightarrow {a.s.}0\)</span>。​</p>
+</blockquote>
+<p>定理的证明比较冗长，不想看了，因此略去。</p>
+<p>最后，我们通过大数定律给出信息熵的一种解释，也就是Shannon定理。考虑一个信息源，其输出是一串i.i.d.的随机变量<span class="math inline">\(X_1,X_2, ...\in\{1,...,k\}\)</span>，且<span class="math inline">\(P(X_i=k)=p_k\)</span>​。定义<span class="math inline">\(\pi_n(\omega)=\prod_{i=1}^nP(X_i=X_i(\omega))\)</span>，也就是信息源输出和当前输出的概率。我们考虑<span class="math inline">\(\pi_n\)</span>的负对数平均值<span class="math inline">\(n^{-1}\pi_n\)</span>，强大数定律就表明：</p>
+<blockquote>
+<p><strong>定理：</strong>（Shannon）<span class="math inline">\(-n^{-1}\log\pi_n\xrightarrow {a.s.} -\sum_{i=1}^np_k\log p_k=H\)</span>​。</p>
+</blockquote>
+<p>换言之，熵是「出现信息的平均稀有程度」的量度。</p>
 
   </div>
 </article>

@@ -13,13 +13,13 @@
 <meta property="og:site_name" content="-margin-">
 <meta property="og:description" content="本文的主题来自于课程「编码与密码」的习题，因为可写的内容比较多，就写在了博客里。 题目如下：  Alice和Bob分别随意出一个bit（\(0\)或\(1\)），记作\(b_A\)和\(b_B\)，现在想要计算\(b_A\wedge b_B\)，并且要求：  Alice和Bob能够相信计算的结果； Alice和Bob无法推断出对方出的是\(0\)还是\(1\)。  能够利用的工具是一些纸牌，纸牌上">
 <meta property="og:locale">
-<meta property="og:image" content="http://example.com/home/gaussrz/Blog/source/_pics/Lecture2-IntroductiontoCryptography.png">
+<meta property="og:image" content="http://example.com/2021/10/03/_pics/Lecture2-IntroductiontoCryptography.png">
 <meta property="article:published_time" content="2021-10-03T04:36:16.000Z">
-<meta property="article:modified_time" content="2021-10-03T10:32:19.466Z">
+<meta property="article:modified_time" content="2021-10-03T10:36:28.800Z">
 <meta property="article:author" content="gaussrz">
 <meta property="article:tag" content="编码与密码">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/home/gaussrz/Blog/source/_pics/Lecture2-IntroductiontoCryptography.png">
+<meta name="twitter:image" content="http://example.com/2021/10/03/_pics/Lecture2-IntroductiontoCryptography.png">
     
     
       
@@ -193,7 +193,7 @@
 <li>在双方见证下，翻开中间的一张牌，并销毁剩下的两张牌。如果中间一张牌是红色，则计算结果为<span class="math inline">\(0\)</span>，否则为<span class="math inline">\(1\)</span>。</li>
 </ol>
 <p>可以将这个方案的所有情况画出：</p>
-<p><img src="/home/gaussrz/Blog/source/_pics/Lecture2-IntroductiontoCryptography.png" /></p>
+<p><img src="../_pics/Lecture2-IntroductiontoCryptography.png" /></p>
 <p>在最终翻开牌之前，双方均无法从手中的牌获得任何信息。只要双方保证偷看牌面的行为不发生，这个方案就能使双方相信。</p>
 <h2 id="纸牌不可翻面只能在双方之间传递时的不可能性证明">纸牌不可翻面、只能在双方之间传递时的不可能性证明</h2>
 <p>如果纸牌不能翻面，而且不能引入第三方，这样的方案还存在吗？也就是说，对于场上的每一个操作，总有一方对操作的对象拥有完全的信息（对于翻到背面面的牌进行操作、或者交给第三方操作，都是没有拥有操作对象的完全信息的例子）。将这个框架用数学方法重新表述如下：</p>

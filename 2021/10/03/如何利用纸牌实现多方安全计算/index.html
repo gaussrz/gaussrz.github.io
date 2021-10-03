@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang=中文>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="本文的主题来自于课程「编码与密码」的习题，因为可写的内容比较多，就写在了博客里。 题目如下：  Alice和Bob分别随意出一个bit（\(0\)或\(1\)），记作\(b_A\)和\(b_B\)，现在想要计算\(b_A\wedge b_B\)，并且要求：  Alice和Bob能够相信计算的结果； Alice和Bob无法推断出对方出的是\(0\)还是\(1\)。  能够利用的工具是一些纸牌，纸牌上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何利用纸牌实现多方安全计算">
+<meta property="og:url" content="http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/index.html">
+<meta property="og:site_name" content="-margin-">
+<meta property="og:description" content="本文的主题来自于课程「编码与密码」的习题，因为可写的内容比较多，就写在了博客里。 题目如下：  Alice和Bob分别随意出一个bit（\(0\)或\(1\)），记作\(b_A\)和\(b_B\)，现在想要计算\(b_A\wedge b_B\)，并且要求：  Alice和Bob能够相信计算的结果； Alice和Bob无法推断出对方出的是\(0\)还是\(1\)。  能够利用的工具是一些纸牌，纸牌上">
+<meta property="og:locale">
+<meta property="og:image" content="http://example.com/home/gaussrz/Blog/source/_pics/Lecture2-IntroductiontoCryptography.png">
+<meta property="article:published_time" content="2021-10-03T04:36:16.000Z">
+<meta property="article:modified_time" content="2021-10-03T10:32:19.466Z">
+<meta property="article:author" content="gaussrz">
+<meta property="article:tag" content="编码与密码">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/home/gaussrz/Blog/source/_pics/Lecture2-IntroductiontoCryptography.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>如何利用纸牌实现多方安全计算</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2021/09/14/Transport-Equation-%E4%BC%A0%E8%BE%93%E6%96%B9%E7%A8%8B/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/&text=如何利用纸牌实现多方安全计算"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/&title=如何利用纸牌实现多方安全计算"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/&is_video=false&description=如何利用纸牌实现多方安全计算"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=如何利用纸牌实现多方安全计算&body=Check out this article: http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/&title=如何利用纸牌实现多方安全计算"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/&title=如何利用纸牌实现多方安全计算"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/&title=如何利用纸牌实现多方安全计算"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/&title=如何利用纸牌实现多方安全计算"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/&name=如何利用纸牌实现多方安全计算&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/&t=如何利用纸牌实现多方安全计算"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%9C%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%97%B6%E7%9A%845%E5%BC%A0%E7%89%8C%E6%96%B9%E6%A1%88"><span class="toc-number">1.</span> <span class="toc-text">存在第三方时的\(5\)张牌方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%B8%E7%89%8C%E5%8F%AF%E4%BB%A5%E7%BF%BB%E9%9D%A2%E6%97%B6%E7%9A%843%E5%BC%A0%E7%89%8C%E6%96%B9%E6%A1%88"><span class="toc-number">2.</span> <span class="toc-text">纸牌可以翻面时的\(3\)张牌方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%B8%E7%89%8C%E4%B8%8D%E5%8F%AF%E7%BF%BB%E9%9D%A2%E5%8F%AA%E8%83%BD%E5%9C%A8%E5%8F%8C%E6%96%B9%E4%B9%8B%E9%97%B4%E4%BC%A0%E9%80%92%E6%97%B6%E7%9A%84%E4%B8%8D%E5%8F%AF%E8%83%BD%E6%80%A7%E8%AF%81%E6%98%8E"><span class="toc-number">3.</span> <span class="toc-text">纸牌不可翻面、只能在双方之间传递时的不可能性证明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="toc-number">4.</span> <span class="toc-text">后记</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        如何利用纸牌实现多方安全计算
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">gaussrz</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-10-03T04:36:16.000Z" itemprop="datePublished">2021-10-03</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E7%BC%96%E7%A0%81%E4%B8%8E%E5%AF%86%E7%A0%81/" rel="tag">编码与密码</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>本文的主题来自于课程「编码与密码」的习题，因为可写的内容比较多，就写在了博客里。</p>
+<p>题目如下：</p>
+<blockquote>
+<p>Alice和Bob分别随意出一个bit（<span class="math inline">\(0\)</span>或<span class="math inline">\(1\)</span>），记作<span class="math inline">\(b_A\)</span>和<span class="math inline">\(b_B\)</span>，现在想要计算<span class="math inline">\(b_A\wedge b_B\)</span>，并且要求：</p>
+<ul>
+<li>Alice和Bob能够相信计算的结果；</li>
+<li>Alice和Bob无法推断出对方出的是<span class="math inline">\(0\)</span>还是<span class="math inline">\(1\)</span>。</li>
+</ul>
+<p>能够利用的工具是一些纸牌，纸牌上的记号可以任意指定。</p>
+</blockquote>
+<p>当然，如果其中一方出了<span class="math inline">\(1\)</span>，可以通过计算的结果推断对方出了什么，这种情况无法避免。因此题中的第二点要求仅限于一方出<span class="math inline">\(0\)</span>时，不能推断对方的比特。这个模型虽然简单，但仍然有一定应用场景，例如双人投票。</p>
+<p>题中没有规定一些额外的条件，例如能否引入第三方，能否将纸牌反面等。本文主要将探索三种情况：</p>
+<ol type="1">
+<li>存在一个可以看到双方纸牌的第三方，此时可以用<span class="math inline">\(5\)</span>张纸牌实现计算方案；</li>
+<li>纸牌可以翻到背面，且所有纸牌的背面相同不可辨认，此时可以用<span class="math inline">\(3\)</span>张纸牌实现方案；</li>
+<li>纸牌不可翻面且只能在双方之间传递，此时不存在符合要求的方案。</li>
+</ol>
+<h2 id="存在第三方时的5张牌方案">存在第三方时的<span class="math inline">\(5\)</span>张牌方案</h2>
+<p>假设存在一个可以信任的第三方，则利用<span class="math inline">\(5\)</span>张纸牌即可实现一个方案。纸牌有两种，不妨认为是红色和黑色，其步骤如下：</p>
+<ol type="1">
+<li>Alice和Bob用两张纸牌表示自己的选择，规定「黑黑」表示<span class="math inline">\(1\)</span>，「黑红」表示<span class="math inline">\(0\)</span>，双方各将一对表示自己选择的纸牌交给第三方。</li>
+<li>第三方查看双方的纸牌，如果双方均出<span class="math inline">\(0\)</span>，即「黑黑」，则直接亮出纸牌；否则场上有<span class="math inline">\(3\)</span>黑<span class="math inline">\(1\)</span>红（<span class="math inline">\(01\)</span>或<span class="math inline">\(10\)</span>）或<span class="math inline">\(2\)</span>黑<span class="math inline">\(2\)</span>红（<span class="math inline">\(00\)</span>），此时第三方添一张红或一张黑，让场上的牌变为<span class="math inline">\(3\)</span>黑<span class="math inline">\(2\)</span>红，并亮牌。</li>
+</ol>
+<p>如果双方均出<span class="math inline">\(1\)</span>，第三方直接亮出双方的输入，双方自然认同计算结果。如果一方出<span class="math inline">\(1\)</span>而对方出<span class="math inline">\(0\)</span>，在亮出的牌中除去自己的<span class="math inline">\(2\)</span>张黑，能够推断出对方一定出了黑红，也能认同计算结果。如果一方出了<span class="math inline">\(0\)</span>，则他知道计算结果一定是<span class="math inline">\(0\)</span>，且在场上减去自己的黑红后，无法从剩下的<span class="math inline">\(2\)</span>黑<span class="math inline">\(1\)</span>红中知道对方的出牌。因此，这套方案是符合要求的。</p>
+<p>虽然这个方案引入了可以信任的第三方，但最终结果并不由第三方产生，而是亮牌之后双方由推理得出。不过这个第三方仍然可以看到双方的输入，能否去除这个第三方呢？如果允许纸牌具有相同的背面，这是可以做到的，下面给出一个这样的方案。</p>
+<h2 id="纸牌可以翻面时的3张牌方案">纸牌可以翻面时的<span class="math inline">\(3\)</span>张牌方案</h2>
+<p>如果纸牌具有相同的背面， 则存在一个使用<span class="math inline">\(3\)</span>张牌的方案，步骤如下：</p>
+<ol type="1">
+<li>Alice将三张正面颜色依次为「黑红红」，背面完全一致的牌排成一排后翻面，传给Bob。</li>
+<li>如果Bob出<span class="math inline">\(0\)</span>，对三张牌执行置换<span class="math inline">\((12)\)</span>；如果出<span class="math inline">\(1\)</span>，对三张牌执行置换<span class="math inline">\((321)\)</span>完成置换后传给Alice。</li>
+<li>如果Alice出<span class="math inline">\(0\)</span>，对三张牌执行置换<span class="math inline">\((12)\)</span>；如果出<span class="math inline">\(1\)</span>，对三张牌执行置换<span class="math inline">\((321)\)</span>。</li>
+<li>在双方见证下，翻开中间的一张牌，并销毁剩下的两张牌。如果中间一张牌是红色，则计算结果为<span class="math inline">\(0\)</span>，否则为<span class="math inline">\(1\)</span>。</li>
+</ol>
+<p>可以将这个方案的所有情况画出：</p>
+<p><img src="/home/gaussrz/Blog/source/_pics/Lecture2-IntroductiontoCryptography.png" /></p>
+<p>在最终翻开牌之前，双方均无法从手中的牌获得任何信息。只要双方保证偷看牌面的行为不发生，这个方案就能使双方相信。</p>
+<h2 id="纸牌不可翻面只能在双方之间传递时的不可能性证明">纸牌不可翻面、只能在双方之间传递时的不可能性证明</h2>
+<p>如果纸牌不能翻面，而且不能引入第三方，这样的方案还存在吗？也就是说，对于场上的每一个操作，总有一方对操作的对象拥有完全的信息（对于翻到背面面的牌进行操作、或者交给第三方操作，都是没有拥有操作对象的完全信息的例子）。将这个框架用数学方法重新表述如下：</p>
+<blockquote>
+<p>Alice和Bob要进行安全的与运算，<span class="math inline">\(\mathbb S\)</span>是状态集合，可以是牌的排列组合构成的集合，或是一列任意比长度的比特串<span class="math inline">\(\bigcup _{n=1}^\infty \mathbb F_2^n\)</span>。</p>
+<ol type="1">
+<li>由Alice开始，Alice根据自己的选择，随机选定一个属于初始状态集<span class="math inline">\(A^+\subset \mathbb S\)</span>（选<span class="math inline">\(1\)</span>)或<span class="math inline">\(A^-\subset S\)</span>（选<span class="math inline">\(0\)</span>）的状态<span class="math inline">\(s_1\)</span>。Bob也选择属于初始状态集<span class="math inline">\(B^+, B^-\)</span>的状态<span class="math inline">\(s_0&#39;\)</span>。</li>
+<li>Alice将<span class="math inline">\(s_1&#39;=f_1(s_1)\)</span>发送给Bob，<span class="math inline">\(f_1: \mathbb S\to \mathbb S\)</span>是Alice第<span class="math inline">\(1\)</span>次传递给Bob时使用的函数，从Alice手中的状态获得发送给Bob的状态。</li>
+<li>Bob获得<span class="math inline">\(s_1&#39;\)</span>，将<span class="math inline">\(s_2=g_1(s_1&#39;,s_0&#39;)\)</span>发送给Alice，<span class="math inline">\(g_1: \mathbb S^2\to \mathbb S\)</span>。</li>
+<li>以此类推，Alice将<span class="math inline">\(s_i&#39;=f_i(s_1, s_2,..., s_{i})\)</span>发送给Bob，<span class="math inline">\(f_i:\mathbb S^i\to \mathbb S\)</span>是类似的函数（<span class="math inline">\(s_1,...,s_i\)</span>是Alice已知的所有信息）；而Bob将<span class="math inline">\(s_{i+1}=g_i(s_1&#39;, s_2&#39;,..., s_{i}&#39;)\)</span>发给Alice（<span class="math inline">\(s_0&#39;, s_1&#39;,...,s_i&#39;\)</span>是Bob已知的所有信息）。</li>
+<li><span class="math inline">\(K\)</span>轮后传递结束。Alice已知信息<span class="math inline">\(s_1, ..., s_K\)</span>，Bob已知信息<span class="math inline">\(s_0&#39;,s_1&#39;,..., s_K&#39;\)</span>。通过手上的信息，Alice和Bob可以通过两个函数<span class="math inline">\(C_A:\mathbb S^K\to \{0,1\}, C_B:\mathbb S^K\to \{0,1\}，\)</span>知道运算的结果，并且无法计算出对方的初始状态。</li>
+</ol>
+</blockquote>
+<p>这个表述允许双方在传递的信息中引入随机性（否则选择必然暴露）。因为每次使用随机数，都相当于从一串随机序列中取元素，因此可以将这个随机序列认为是初始状态的一部分，从而<strong>只要在初始状态中要求随机性即可</strong>，而后续的所有函数都是确定性的（也是公开的，否则无法称之为方案）。</p>
+<p>下面将证明符合以上几点的状态集<span class="math inline">\(A^+, A^-, B^+, B^-\)</span>以及函数<span class="math inline">\(\{f_i\}, \{g_i\}\)</span>不存在。假设经过一次计算之后，双方想要知道对方的选择，则Alice可以如下操作：</p>
+<ol type="1">
+<li>Alice知道<span class="math inline">\(s_1,..., s_K\)</span>和<span class="math inline">\(s_1&#39;,... s_K&#39;\)</span>，因此她可以分析得到Bob可能的初始状态集<span class="math inline">\(\mathcal B\)</span>，如果<span class="math inline">\(\mathcal B\)</span>包含于<span class="math inline">\(B^+\)</span>或<span class="math inline">\(B^-\)</span>中，Alice就知道了Bob的输入。</li>
+<li>如果<span class="math inline">\(\mathcal B\)</span>和<span class="math inline">\(B^+, B^-\)</span>都相交，则Alice无法推断出Bob的输入。但此时Bob会发现存在<span class="math inline">\(s^-\in B^-, s^+\in B^+\)</span>，使得</li>
+</ol>
+<p><span class="math display">\[
+g_i(s_i&#39;, s_{i-1}&#39;,...,s^+)=g_i(s_i&#39;, s_{i-1}&#39;,...,s^+)=s_{i+1}(N-1\le i&lt;0)\\
+C_B(s^+, s_1&#39;,...,s_K&#39;)=C_B(s^-, s_1&#39;,...,s_K&#39;)
+\]</span></p>
+<p>​ 这表明Bob无论出<span class="math inline">\(0\)</span>还是<span class="math inline">\(1\)</span>，对计算结果都没有影响，从而Bob可以推出Alice的输入是<span class="math inline">\(0\)</span>。</p>
+<p>总之，Alice和Bob中总有一个人会泄露输入，这个方案是不安全的。∎</p>
+<hr />
+<h2 id="后记">后记</h2>
+<p>第三种情况和前两种的区别在哪里？区别在于证明的第<span class="math inline">\(2\)</span>步，Bob此时并不知道Alice传给他的信息是什么，第<span class="math inline">\(2\)</span>步的函数值可能是多值的。</p>
+<p>有趣的是，最后的命题的形式和结果都和Zermelo定理有些类似。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%9C%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%97%B6%E7%9A%845%E5%BC%A0%E7%89%8C%E6%96%B9%E6%A1%88"><span class="toc-number">1.</span> <span class="toc-text">存在第三方时的\(5\)张牌方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%B8%E7%89%8C%E5%8F%AF%E4%BB%A5%E7%BF%BB%E9%9D%A2%E6%97%B6%E7%9A%843%E5%BC%A0%E7%89%8C%E6%96%B9%E6%A1%88"><span class="toc-number">2.</span> <span class="toc-text">纸牌可以翻面时的\(3\)张牌方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%B8%E7%89%8C%E4%B8%8D%E5%8F%AF%E7%BF%BB%E9%9D%A2%E5%8F%AA%E8%83%BD%E5%9C%A8%E5%8F%8C%E6%96%B9%E4%B9%8B%E9%97%B4%E4%BC%A0%E9%80%92%E6%97%B6%E7%9A%84%E4%B8%8D%E5%8F%AF%E8%83%BD%E6%80%A7%E8%AF%81%E6%98%8E"><span class="toc-number">3.</span> <span class="toc-text">纸牌不可翻面、只能在双方之间传递时的不可能性证明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="toc-number">4.</span> <span class="toc-text">后记</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/&text=如何利用纸牌实现多方安全计算"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/&title=如何利用纸牌实现多方安全计算"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/&is_video=false&description=如何利用纸牌实现多方安全计算"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=如何利用纸牌实现多方安全计算&body=Check out this article: http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/&title=如何利用纸牌实现多方安全计算"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/&title=如何利用纸牌实现多方安全计算"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/&title=如何利用纸牌实现多方安全计算"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/&title=如何利用纸牌实现多方安全计算"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/&name=如何利用纸牌实现多方安全计算&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/&t=如何利用纸牌实现多方安全计算"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021
+    gaussrz
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

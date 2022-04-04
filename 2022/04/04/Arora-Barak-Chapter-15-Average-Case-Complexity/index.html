@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang=中文>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="\[ \newcommand{\B}{\mathbf} \newcommand{\R}{\mathrm} \newcommand{\distNP}{\mathrm{dist}\mathbf{NP}} \newcommand{\distP}{\mathrm{dist}\mathbf{P}} \newcommand{\Pr}{\mathbf{Pr}} \newcommand{\E}{\mathbf{E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Arora &amp; Barak Chapter 15 - Average Case Complexity">
+<meta property="og:url" content="http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/index.html">
+<meta property="og:site_name" content="-margin-">
+<meta property="og:description" content="\[ \newcommand{\B}{\mathbf} \newcommand{\R}{\mathrm} \newcommand{\distNP}{\mathrm{dist}\mathbf{NP}} \newcommand{\distP}{\mathrm{dist}\mathbf{P}} \newcommand{\Pr}{\mathbf{Pr}} \newcommand{\E}{\mathbf{E">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-04-04T08:28:00.000Z">
+<meta property="article:modified_time" content="2022-04-04T08:29:50.849Z">
+<meta property="article:author" content="gaussrz">
+<meta property="article:tag" content="computational complexity">
+<meta property="article:tag" content="theoretical computer science">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Arora &amp; Barak Chapter 15 - Average Case Complexity</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2021/10/03/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%BA%B8%E7%89%8C%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%B9%E5%AE%89%E5%85%A8%E8%AE%A1%E7%AE%97/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/&text=Arora &amp; Barak Chapter 15 - Average Case Complexity"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/&title=Arora &amp; Barak Chapter 15 - Average Case Complexity"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/&is_video=false&description=Arora &amp; Barak Chapter 15 - Average Case Complexity"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Arora &amp; Barak Chapter 15 - Average Case Complexity&body=Check out this article: http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/&title=Arora &amp; Barak Chapter 15 - Average Case Complexity"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/&title=Arora &amp; Barak Chapter 15 - Average Case Complexity"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/&title=Arora &amp; Barak Chapter 15 - Average Case Complexity"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/&title=Arora &amp; Barak Chapter 15 - Average Case Complexity"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/&name=Arora &amp; Barak Chapter 15 - Average Case Complexity&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/&t=Arora &amp; Barak Chapter 15 - Average Case Complexity"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#distributional-problems"><span class="toc-number">1.</span> <span class="toc-text">Distributional Problems</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#distnp-and-its-complete-problems"><span class="toc-number">2.</span> <span class="toc-text">\(\distNP\) and Its Complete Problems</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#polynomial-time-on-average"><span class="toc-number">2.1.</span> <span class="toc-text">Polynomial Time on Average</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reductions"><span class="toc-number">2.2.</span> <span class="toc-text">Reductions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#a-complete-problem-in-distnp"><span class="toc-number">2.3.</span> <span class="toc-text">A Complete Problem in \(\distNP\)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#another-definition-of-polynomial-average-time"><span class="toc-number">2.4.</span> <span class="toc-text">Another Definition of Polynomial Average Time</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#polynomial-time-samplability"><span class="toc-number">2.5.</span> <span class="toc-text">Polynomial Time Samplability</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Arora &amp; Barak Chapter 15 - Average Case Complexity
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">gaussrz</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-04-04T08:28:00.000Z" itemprop="datePublished">2022-04-04</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/computational-complexity/" rel="tag">computational complexity</a>, <a class="tag-link-link" href="/tags/theoretical-computer-science/" rel="tag">theoretical computer science</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><span class="math display">\[
+\newcommand{\B}{\mathbf}
+\newcommand{\R}{\mathrm}
+\newcommand{\distNP}{\mathrm{dist}\mathbf{NP}}
+\newcommand{\distP}{\mathrm{dist}\mathbf{P}}
+\newcommand{\Pr}{\mathbf{Pr}}
+\newcommand{\E}{\mathbf{E}}
+\]</span> Many average case algorithms focus on problems on <em>random graphs</em>. The <em>average</em> is in the sense of the randomness of the graphs. Many <span class="math inline">\(\mathbf{NP}\)</span>-complete problems are easy in the random case, such as <span class="math inline">\(\R{CLIQUE}\)</span>, <span class="math inline">\(\R{3-COLOR}\)</span>, and <span class="math inline">\(\R{INDEPENDENT\; SET}\)</span>. The average case complexity is polynomial or nearly polynomial.</p>
+<p>Note that although <span class="math inline">\(\B{NP}\)</span>-complete problems are equivalent in the worst case complexity, they may differ in the average case complexity. The point is that the worst case reduction no longer works in the average case, since <em>Karp reduction does not preserve the distribution of the input</em>. This chapter is to present Levin's theory that formalize these problems.</p>
+<blockquote>
+<p>Comments: 1. Should that be the case that the Karp reduction, or mapping between input spaces can exhibit a <em>hard</em> part or <em>easy</em> part of a problem? 2. Levin's theory, of course, should take care the mappings between distributions. I'm wondering in what way did Levin state them: the independence of the mappings (that says nothing actually) or finer ways? The construction of average case complete problems might be based on Turing machines or self-directional problems, since it might be easy to find a hardcore in a regular problem.</p>
+</blockquote>
+<h2 id="distributional-problems">Distributional Problems</h2>
+<p>The following definition is natural:</p>
+<blockquote>
+<p><strong>Definition</strong> (distributional problems) A distributional problem is a pair <span class="math inline">\(\langle L, \mathcal D\rangle\)</span>, where <span class="math inline">\(L\)</span> is a decision problem, <span class="math inline">\(\mathcal D\)</span> is a distribution on <span class="math inline">\(\{0, 1\}^*\)</span>.</p>
+</blockquote>
+<p>Interestingly, the distribution <span class="math inline">\(\mathcal D\)</span> is defined an all lengths of inputs, rather than a separate distribution on each length of input. One of the reason I see is the definition of average case complexity, that a problem is still averagely good if all algorithms perform poorly on several certain lengths of inputs.</p>
+<blockquote>
+<p>Comments: If there exists 'hard' inputs, it's meaningless to discuss arbitrary distribution of inputs, since by making the distribution accumulates among 'bad' inputs, the average case complexity can be arbitrarily close to the worst case complexity. So it's important to discuss the existence of hard inputs.</p>
+</blockquote>
+<p>To describe the 'real world distribution', we define two 'good' classes of distributions: - <strong>Polynomial time computable distributions</strong>: distributions that the CDFs is polynomial time computable, the CDF is defined by the lexicographical order. - <strong>Polynomial time samplable distributions</strong>: distributions that can be sampled in polynomial time. The first <span class="math inline">\(\subset\)</span> the second, and if <span class="math inline">\(\B P \neq \B P ^\B{\#P}\)</span>, the first is a proper subset of the second.</p>
+<blockquote>
+<p>An immediate question: is the definition of computable distributions identical to all orders? Or at least the orders that compatible with input lengths?</p>
+</blockquote>
+<h2 id="distnp-and-its-complete-problems"><span class="math inline">\(\distNP\)</span> and Its Complete Problems</h2>
+<h3 id="polynomial-time-on-average">Polynomial Time on Average</h3>
+<p>This chapter focus on <span class="math inline">\(\B{NP}\)</span> problems with polynomial time computable distribution of inputs, i.e. <span class="math display">\[
+\distNP:=\{\langle L, \mathcal D \rangle\ | L\in \B{NP}, \mathcal D\text{ polynomial time computable}\}.
+\]</span></p>
+<p>The first thing to do is to define an analogous <span class="math inline">\(\B P\)</span> class. To my surprise, the definition is based on the expectation rather than the analogy of 'convergence in probability'.</p>
+<blockquote>
+<p><strong>Definition</strong> (<span class="math inline">\(\distP\)</span>) A problem <span class="math inline">\(\langle L, \mathcal D\rangle\in\distNP\)</span> is in <span class="math inline">\(\distP\)</span>, if there exists an algorithm <span class="math inline">\(A\)</span> with running time <span class="math inline">\(t(x)\)</span> on the input <span class="math inline">\(x\)</span> such that <span class="math display">\[
+\E \left[ \frac{t(x)^{1/c}}{|x|} \right] = c_1
+\]</span> for some constants <span class="math inline">\(c, c_1\)</span>.</p>
+</blockquote>
+<p>The reason to define the <span class="math inline">\(\distP\)</span> in this manner is to ensure the invariability under polynomial time reduction. Suppose there is a reduction that squares the computational time (in the worst case, this is definitely a valid Karp reduction), the reduced problem is still in <span class="math inline">\(\distP\)</span>.</p>
+<p>It's a routine task to bound the probability of quick calculation by the expectation by Chebyshev's inequality, the detailed result is omitted here.</p>
+<h3 id="reductions">Reductions</h3>
+<p>This is probably the most expected part in this chapter. The definition is quite natural: &gt; <strong>Definition</strong> (reduction): &gt; A distributional problem <span class="math inline">\(\langle L_1, \mathcal D_1\rangle\)</span>, reduces to a problem <span class="math inline">\(\langle L_2, \mathcal D_2\rangle\)</span>, denoted by <span class="math inline">\(\langle L_1, \mathcal D_1\rangle\le\langle L_2, \mathcal D_2\rangle\)</span>, if there exists a polynomial-time computable mapping <span class="math inline">\(f\)</span> such that: &gt; 1. <span class="math inline">\(x\in L_1 \iff f(x) \in L_2\)</span>; &gt; 2. <span class="math inline">\(\forall x: |f(x)| = \Omega(|x|^\epsilon)\)</span>; &gt; 3. <span class="math inline">\(\forall x : \Pr_{f\circ\mathcal D_1}[x] \le c_1|x|^c Pr_{\mathcal D_2}[x]\)</span>, &gt; where <span class="math inline">\(\epsilon\)</span> and <span class="math inline">\(c, c_1\)</span> are positive constants.</p>
+<p>The first two is regular reduction definition, and the third one rules out the condition that the mapping <span class="math inline">\(f\)</span> maps a high proportion of inputs to the hard part of <span class="math inline">\(L_2\)</span>, since we want 'if <span class="math inline">\(L_2\)</span> is computable, then <span class="math inline">\(L_1\)</span> is computable'. The following theorem says the above definition satisfies our requirements.</p>
+<blockquote>
+<p><strong>Theorem</strong> If <span class="math inline">\(\langle L_1, \mathcal D_1\rangle\le\langle L_2, \mathcal D_2\rangle\)</span> and <span class="math inline">\(\langle L_2, \mathcal D_2\rangle\)</span> has an algorithm that is polynomial on average, then there is a polynomial-average algorithm that computes <span class="math inline">\(\langle L_2, \mathcal D_2\rangle\)</span>.</p>
+</blockquote>
+<h3 id="a-complete-problem-in-distnp">A Complete Problem in <span class="math inline">\(\distNP\)</span></h3>
+<p>In this section, we construct a complete problem in <span class="math inline">\(\distNP\)</span>, which is named after Levin, albeit this problem is quite artificial. Just as remarked, this construction is based on certification Turing machines.</p>
+<blockquote>
+<p><strong>Definition</strong> (the universal distributional problem) The problem <span class="math inline">\(\langle U, \mathcal D \rangle\)</span> takes inputs in the form of <span class="math inline">\(\langle M, x, 1^t, 1^l\rangle\)</span>, where <span class="math inline">\(M\)</span> is a Turing machine. The input is in <span class="math inline">\(U\)</span> iff there exists <span class="math inline">\(y\)</span> such that <span class="math inline">\(|y| \le l\)</span> and <span class="math inline">\(M(x, y)\)</span> accepts in <span class="math inline">\(t\)</span> steps. <span class="math inline">\(\mathcal D\)</span> is an uniform distribution such that <span class="math display">\[
+\Pr_\mathcal D [\langle M, x, 1^t, 1^l \rangle ] = \frac{1} {|M|(|M|+1)2^{-|M|}}
+\frac1{|x|(|x|+1)2^{-|x|}}
+\frac1{(s+t)(s+t+1)}.
+\]</span></p>
+</blockquote>
+<p>This definition is just the analogy of <span class="math inline">\(\R{TMSAT}\)</span>, equipped with a certain distribution. The reason for the last to inputs is to insure the problem in <span class="math inline">\(\distNP\)</span>, i.e. polynomial time solvable by a nondeterministic Turing machine.</p>
+The rest work is to construct a valid mapping according to the definition of reduction. The construction is probably the most beautiful part in this chapter, which is written below: &gt; <strong>Definition</strong> (peak elimination mapping) &gt; For a distribution <span class="math inline">\(\mathcal D\)</span>, define a mapping <span class="math inline">\(h\)</span> as follows: &gt; 1. if <span class="math inline">\(\Pr_\mathcal D[x]\le 2^{-|x|}\)</span>, then <span class="math inline">\(h(x)=x\)</span>; &gt; 2. if <span class="math inline">\(\Pr_\mathcal D [x]&gt;2^{-|x|}\)</span>, then <span class="math inline">\(h(x)\)</span> is the longest common prefix of <span class="math inline">\(\mu_\mathcal D(x)\)</span> and <span class="math inline">\(\mu_\mathcal D (x-1)\)</span>, &gt; where <span class="math inline">\(\mu_\mathcal D\)</span> is the CDF of the distribution <span class="math inline">\(\mathcal D\)</span>. &gt; Then, define the <em>peak elimination mapping</em> <span class="math inline">\(g\)</span>: &gt; $$ g(x) = {
+<span class="math display">\[\begin{array}{ll}
+1h(x),&amp;\Pr[x]\le 2^{-|x|}\\
+0h(x),&amp;\Pr[x]&gt; 2^{-|x|}
+\end{array}\]</span>
+<p>.</p>
+<p>$$</p>
+<p>Intuitively, <span class="math inline">\(g\)</span> changes the lengths of inputs according to their probability, and make the mapping unique by choosing the common prefix as the new representation. It's all about the properties of the longest common prefix. <span class="math inline">\(g\)</span> is carefully made to construct a reduction to <span class="math inline">\(\langle U, \mathcal D\rangle\)</span>, that is <span class="math display">\[
+x \mapsto\mathcal \langle M&#39;, z:=g(x), 1^{|x|^c+|x|}, 1^{|x|^c+|x|^d}\rangle,
+\]</span> where <span class="math inline">\(M&#39;\)</span> is a modification of the certification Turing machine <span class="math inline">\(M\)</span> of <span class="math inline">\(L\)</span>, <span class="math inline">\(M\)</span> certificates whether <span class="math inline">\(x\in L\)</span> with a witness <span class="math inline">\(y\)</span>, <span class="math inline">\(|y|\le |x|^c\)</span> in time <span class="math inline">\(|x|^c\)</span>. <span class="math inline">\(M&#39;\)</span> takes a witness <span class="math inline">\((x, y)\)</span> of length <span class="math inline">\(|x|+|x|^c\)</span> as input, and checks whether <span class="math inline">\(M(x, y)\)</span> accepts in time <span class="math inline">\(|x|^c\)</span> and <span class="math inline">\(g(x)=z\)</span>. <span class="math inline">\(|x|^d\)</span> is the overhead of computing <span class="math inline">\(g\)</span>.</p>
+<p>This is a valid reduction, so here is Levin's theorem: &gt; <strong>Theorem</strong> (Levin) &gt; <span class="math inline">\(\langle U, \mathcal D \rangle\)</span> is <span class="math inline">\(\distNP\)</span>-complete.</p>
+<h3 id="another-definition-of-polynomial-average-time">Another Definition of Polynomial Average Time</h3>
+<p>This definition is in the 'convergence in probability' manner. &gt; <strong>Definition</strong> (heuristic polynomial time) &gt; An polynomial time algorithm <span class="math inline">\(A\)</span> for the <span class="math inline">\(\distNP\)</span> problem <span class="math inline">\(\langle L, \mathcal D\rangle\)</span> is heuristic polynomial time, if &gt; <span class="math display">\[
+\sum_{A(x)\neq \chi_L(x)} \Pr_D[x] p(|x|) &lt; \infty
+ \]</span> &gt; for any polynomial <span class="math inline">\(p\)</span>.</p>
+<p>This definition worth careful inspection. Intuitively, the probability that <span class="math inline">\(A\)</span> fails descends rapidly with <span class="math inline">\(|x|\)</span>. This definition is incompatible with the definition of <span class="math inline">\(\distP\)</span>, they cannot derive each other. But it's easy to see the definition of reduction is still valid for heuristic polynomial time algorithms.</p>
+<h3 id="polynomial-time-samplability">Polynomial Time Samplability</h3>
+<p>There is a result by Impagliazzo and Levin that if a problem is <span class="math inline">\(\distNP\)</span>-complete, then it is also <span class="math inline">\(\langle \B{NP}, \B P\text{-samplable}\rangle\)</span>-complete.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#distributional-problems"><span class="toc-number">1.</span> <span class="toc-text">Distributional Problems</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#distnp-and-its-complete-problems"><span class="toc-number">2.</span> <span class="toc-text">\(\distNP\) and Its Complete Problems</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#polynomial-time-on-average"><span class="toc-number">2.1.</span> <span class="toc-text">Polynomial Time on Average</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reductions"><span class="toc-number">2.2.</span> <span class="toc-text">Reductions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#a-complete-problem-in-distnp"><span class="toc-number">2.3.</span> <span class="toc-text">A Complete Problem in \(\distNP\)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#another-definition-of-polynomial-average-time"><span class="toc-number">2.4.</span> <span class="toc-text">Another Definition of Polynomial Average Time</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#polynomial-time-samplability"><span class="toc-number">2.5.</span> <span class="toc-text">Polynomial Time Samplability</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/&text=Arora &amp; Barak Chapter 15 - Average Case Complexity"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/&title=Arora &amp; Barak Chapter 15 - Average Case Complexity"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/&is_video=false&description=Arora &amp; Barak Chapter 15 - Average Case Complexity"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Arora &amp; Barak Chapter 15 - Average Case Complexity&body=Check out this article: http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/&title=Arora &amp; Barak Chapter 15 - Average Case Complexity"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/&title=Arora &amp; Barak Chapter 15 - Average Case Complexity"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/&title=Arora &amp; Barak Chapter 15 - Average Case Complexity"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/&title=Arora &amp; Barak Chapter 15 - Average Case Complexity"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/&name=Arora &amp; Barak Chapter 15 - Average Case Complexity&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/04/04/Arora-Barak-Chapter-15-Average-Case-Complexity/&t=Arora &amp; Barak Chapter 15 - Average Case Complexity"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021-2022
+    gaussrz
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
